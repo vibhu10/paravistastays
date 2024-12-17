@@ -1,0 +1,246 @@
+.host-container {
+    width: 100vw;
+}
+
+.header-host {
+    background-color: black;
+    width: 100vw;
+    height: 85px;
+    
+    display: flex;
+    justify-content: space-between;
+
+}
+.header-host img{
+    width: 240px;
+    height: 76px;
+    margin-left: 9px;
+    /* position: absolute;
+    left: 43px; */
+}
+.header-host button{
+  margin: 15px;
+  width: 70px;
+  height: 45px;
+  border-radius: 10px;
+  border: transparent;
+  background-color: #198E78;
+  color: white;
+  margin: 50px;
+
+}
+.body-host {
+    width: 100vw;
+    height: 80vh;
+  
+    display: flex;
+   align-items: center;
+   justify-content: center;
+  
+}
+
+.pannel-box {
+    width: 1164px;
+    height: 429px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.page-question{
+    font-weight: 600;
+    font-size: 25px;
+    top: 89px;
+    position: absolute;
+
+}
+/* this is css for page2 center buttons-starting*/
+
+.buttons-div{
+    width: 103px;
+    height: 125px;
+    border: 1px solid grey;
+    margin: 21px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.center-buttons{
+border: transparent;
+background-color: white;
+
+}
+/* this is css for page2 center buttons-ending*/
+.box{
+    width: 372px;
+    height: 350px;
+    border: 0px solid grey;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.box-image{
+    width: 126px;
+    height: 126px;
+    background-color: lightgray;
+    border-radius: 50%;
+    margin:10px;
+}
+.box p{
+    color:gray;
+    text-align: center;
+}
+.box h3{
+    position: relative;
+    left: -157px;
+    top: -23px;
+}
+.host-footer{
+    width: 100vw;
+    height: 80px;
+    border-top: 4px solid lightgrey;
+   
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    justify-content: space-between;
+}
+.host-footer button{
+    width: 137px;
+    height: 47px;
+    border-radius: 10px;
+    border: transparent;
+background-color: #198E78;
+ color:white;
+ margin: 10px;
+
+
+}
+.note-page{
+    position: absolute;
+    top: 620px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+.body-host-with-scroll {
+  width: 100%;
+  flex-grow: 1; /* This makes the body area flexible */
+  overflow-y: auto; /* Enables scrolling if content exceeds the available height */
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  
+  
+}
+
+.pannel-box-page13 {
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+}
+
+.pannel-box-page12-div1,
+.pannel-box-page12-div2,
+.pannel-box-page12-div3,
+.pannel-box-page12-div4 {
+  width: 100%;
+  height: 250px; /* Large height to force scrolling */
+
+  margin-bottom: 10px;
+}
+
+.pannel-box-page12-div1 {
+  
+}
+
+.pannel-box-page12-div2 {
+  flex-grow: 1; /* This makes the body area flexible */
+  overflow-y: auto; 
+}
+
+.pannel-box-page12-div3 {
+  border-color: #94197a;
+}
+
+.pannel-box-page12-div4 {
+  border-color: #b64623;
+}
+
+.host-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+}
+
+
+/* .loading-pageThirteen{
+  width: 1350px;
+  height: 4px;
+  position: absolute;
+  top: 703px;
+  border-top: 4px solid #198E78;
+} */
+   /* Footer styling */
+   .PageThirteen-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Spread Back and Next buttons */
+    width: 100%; /* Full width of the screen */
+    position: fixed; /* Fixed at the bottom */
+    bottom: 0;
+    left: 0;
+    background-color: #fff; /* Background color */
+    padding: 16px;
+    box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Back and Next buttons */
+  .PageThirteen-back-btn,
+  .PageThirteen-next-btn {
+    padding: 10px 20px;
+    width: 100px;
+    border-radius: 20px;
+    border: none;
+    background-color: #198E78;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .PageThirteen-back-btn:hover,
+  .PageThirteen-next-btn:hover {
+    background-color: #388e3c;
+  }
+  
+  .PageThirteen-progress-bar {
+    width: 1450px;
+    height: 4px;
+    background-color: #198E78;
+    border-radius: 2px;
+    margin: 0 16px;
+    position: absolute;
+    top: -5px;
+    left: -16px;
+  }
+  .PageThirteen-error {
+    color: red;
+    font-size: 14px;
+    margin-top: 20px;
+  }
