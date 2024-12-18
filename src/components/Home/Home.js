@@ -47,7 +47,7 @@ export default function Home() {
   useEffect(() => {
     const fetchPropertyData = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/property/allproperties');
+        const response = await axios.get('https://mhmk2b29-3000.inc1.devtunnels.ms/api/property/allproperties');
         setPropertyData(response.data); // Update state with fetched data
       } catch (err) {
         console.error('Error fetching property data:', err);
@@ -68,7 +68,7 @@ export default function Home() {
 
   const checkEmailExistence = async () => {
     try {
-      const response = await axios.post("http://localhost:3000/api/users/signin/check-email", { email });
+      const response = await axios.post("https://mhmk2b29-3000.inc1.devtunnels.ms/api/users/signin/check-email", { email });
       if (response.status === 200) {
         setError("");
         return true;
@@ -124,7 +124,7 @@ export default function Home() {
     }
 
     try {
-      const response = await axios.post("http://localhost:3000/api/users/signup", {
+      const response = await axios.post("https://mhmk2b29-3000.inc1.devtunnels.ms/api/users/signup", {
         email,
         password,
         firstName,
@@ -147,7 +147,7 @@ export default function Home() {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post("http://localhost:3000/api/users/signin", {
+      const response = await axios.post("https://mhmk2b29-3000.inc1.devtunnels.ms/api/users/signin", {
         email,
         password,
       });

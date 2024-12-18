@@ -22,7 +22,7 @@ function App() {
         <Routes>
          
           <Route path="/" element={<Home />} /> 
-
+       
           <Route path="/user-profile" element={<ProfilePage/>} />
           <Route path='/host-Registration' element={<HostRegistration/>}/>
         
