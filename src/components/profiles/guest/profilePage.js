@@ -28,7 +28,7 @@ const ProfilePage = () => {
       console.log(token, 'checking token is stored in local');
 
       try {
-        const response = await fetch('http://localhost:3000/api/users/profile', {
+        const response = await fetch('https://mhmk2b29-3000.inc1.devtunnels.ms/api/users/profile', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -61,7 +61,7 @@ const ProfilePage = () => {
     setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:3000/api/users/profile', {
+      const response = await fetch('https://mhmk2b29-3000.inc1.devtunnels.ms/api/users/profile', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

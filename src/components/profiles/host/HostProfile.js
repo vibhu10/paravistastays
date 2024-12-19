@@ -58,7 +58,7 @@ export default function HostProfile() {
         if (!token) throw new Error("Token not found. Please log in again.");
 
         const response = await fetch(
-          "http://localhost:3000/api/property/propertiesByEmail",
+          "https://mhmk2b29-3000.inc1.devtunnels.ms/api/property/propertiesByEmail",
           {
             method: "GET",
             headers: { Authorization: `Bearer ${token}` },
@@ -95,7 +95,7 @@ export default function HostProfile() {
       if (!token) throw new Error("Token not found. Please log in again.");
 
       const response = await fetch(
-        `http://localhost:3000/api/property/propertyDetails?title=${encodeURIComponent(
+        `https://mhmk2b29-3000.inc1.devtunnels.ms/api/property/propertyDetails?title=${encodeURIComponent(
           property.title
         )}&internalName=${encodeURIComponent(property.internalName)}`,
         {
@@ -127,7 +127,7 @@ export default function HostProfile() {
       if (!token) throw new Error("Token not found. Please log in again.");
 
       const response = await fetch(
-        `http://localhost:3000/api/property/updateProperty/${updatedData.propertyId}`,
+        `https://mhmk2b29-3000.inc1.devtunnels.ms/api/property/updateProperty/${updatedData.propertyId}`,
         {
           method: "PUT",
           headers: {

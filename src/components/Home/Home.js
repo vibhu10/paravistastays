@@ -49,6 +49,7 @@ export default function Home() {
       try {
         const response = await axios.get('https://mhmk2b29-3000.inc1.devtunnels.ms/api/property/allproperties');
         setPropertyData(response.data); // Update state with fetched data
+  console.log(response,"datacomming from internet")
       } catch (err) {
         console.error('Error fetching property data:', err);
         setError('Failed to fetch property data.');
