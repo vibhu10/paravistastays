@@ -38,6 +38,8 @@ export default function Home() {
 
   const [propertyData, setPropertyData] = useState(null);//state for the showing all property
   console.log(propertyData,"check for data comming from backetd")
+  
+  
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -49,7 +51,6 @@ export default function Home() {
       try {
         const response = await axios.get('https://mhmk2b29-3000.inc1.devtunnels.ms/api/property/allproperties');
         setPropertyData(response.data); // Update state with fetched data
-  console.log(response,"datacomming from internet")
       } catch (err) {
         console.error('Error fetching property data:', err);
         setError('Failed to fetch property data.');
@@ -217,7 +218,8 @@ export default function Home() {
       {/* Header */}
       <div className="header">
         <div className="home-filter">
-          <img src="/48564e5fe8898cf62b0bbf42276d6cf3.jpeg" alt="paradise" />
+        <img src={process.env.PUBLIC_URL + '/paradiseLogo.jpeg'} alt="paradise" />
+
           <div className="filter"></div>
 
           <button className="filter-hamburger">

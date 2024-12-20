@@ -58,6 +58,7 @@ export default function HostProfile() {
         if (!token) throw new Error("Token not found. Please log in again.");
 
         const response = await fetch(
+      
           "https://mhmk2b29-3000.inc1.devtunnels.ms/api/property/propertiesByEmail",
           {
             method: "GET",

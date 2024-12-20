@@ -4,9 +4,7 @@ import "../Host-Registration/css/pageFive.css";
 export function PageFive({ handleNext, handleBack, handleSaveProperty }) {
   const [formData, setFormData] = useState({
     country: "",
-
     flat: "",
-
     street: "",
     landmark: "",
     district: "",
@@ -22,32 +20,14 @@ export function PageFive({ handleNext, handleBack, handleSaveProperty }) {
 
   // Fetch country data
   async function getCountryData() {
-    const res = await fetch("https://restcountries.com/v3.1/all");
-    const data = await res.json();
-    setCountries(data);
+    try {
+      const res = await fetch("https://restcountries.com/v3.1/all");
+      const data = await res.json();
+      setCountries(data);
+    } catch (error) {
+      console.error("Error fetching country data:", error);
+    }
   }
-
-  // Validate pin code
-  // async function validatePinCode(pin, state) {
-  //   if (!pin || !state) return false;
-
-  //   try {
-  //     const res = await fetch(
-  //       `https://api.apilayer.com/geo/postal_code/${pin}/state/${state}`,
-  //       {
-  //         method: "GET",
-  //         headers: {
-  //           apikey: API_KEY,
-  //         },
-  //       }
-  //     );
-  //     const data = await res.json();
-  //     return data.isValid; // Assuming the API returns a field `isValid`
-  //   } catch (error) {
-  //     console.error("Error validating pin code:", error);
-  //     return false;
-  //   }
-  // }
 
   useEffect(() => {
     getCountryData();
@@ -69,9 +49,8 @@ export function PageFive({ handleNext, handleBack, handleSaveProperty }) {
     if (!formData.country) newErrors.country = "Country/Region is required";
     if (!formData.street) newErrors.street = "Street address is required";
     if (!formData.city) newErrors.city = "City / Town is required";
-    if (!formData.state)
-      newErrors.state = "State / Union Territory is required";
-    if (!formData.pin) newErrors.pin = "Pin code is required";
+    if (!formData.state) newErrors.state = "State / Union Territory is required";
+    if (!formData.pinCode) newErrors.pinCode = "Pin code is required";
 
     return newErrors;
   };
@@ -102,8 +81,7 @@ export function PageFive({ handleNext, handleBack, handleSaveProperty }) {
         <div className="page-5-text">
           <p className="page-5-title">Confirm your address</p>
           <p className="page-5-subtitle">
-            Your address is only shared with guests after they’ve made a
-            reservation.
+            Your address is only shared with guests after they’ve made a reservation.
           </p>
         </div>
         <div className="page-5-form-data">
@@ -114,9 +92,7 @@ export function PageFive({ handleNext, handleBack, handleSaveProperty }) {
                 name="country"
                 value={formData.country}
                 onChange={handleChange}
-                className={`page-5-input ${
-                  errors.country ? "input-error" : ""
-                }`}
+                className={`page-5-input ${errors.country ? "input-error" : ""}`}
               >
                 <option value="" disabled>
                   Country/Region
@@ -132,7 +108,7 @@ export function PageFive({ handleNext, handleBack, handleSaveProperty }) {
 
             <input
               type="text"
-              name="houseAndFlat"
+              name="flat"
               placeholder="Flat, house, etc. (if applicable)"
               value={formData.flat}
               onChange={handleChange}
@@ -190,9 +166,7 @@ export function PageFive({ handleNext, handleBack, handleSaveProperty }) {
                   placeholder="State/Union Territory"
                   value={formData.state}
                   onChange={handleChange}
-                  className={`page-5-input ${
-                    errors.state ? "input-error" : ""
-                  }`}
+                  className={`page-5-input ${errors.state ? "input-error" : ""}`}
                 />
                 {errors.state && <p className="error-text">{errors.state}</p>}
               </div>
@@ -201,23 +175,20 @@ export function PageFive({ handleNext, handleBack, handleSaveProperty }) {
             <div className="form-group">
               <input
                 type="number"
-                name="pinCode
-street
-"
+                name="pinCode"
                 placeholder="Pin code"
                 value={formData.pinCode}
                 onChange={handleChange}
                 className={`page-5-input ${errors.pinCode ? "input-error" : ""}`}
               />
-              {errors.pin && <p className="error-text">{errors.pinCode}</p>}
+              {errors.pinCode && <p className="error-text">{errors.pinCode}</p>}
             </div>
 
             <label className="page-5-switch">
               <div className="page-5-switch-content">
                 <h6>Show your specific location</h6>
                 <p>
-                  Make it clear to guests where your place is located. We'll
-                  only share your address after they've made a reservation.
+                  Make it clear to guests where your place is located. We'll only share your address after they've made a reservation.
                 </p>
               </div>
               <input

@@ -2,25 +2,23 @@ import '../Host-Registration/css/pageEight.css';
 import React, { useState } from 'react';
 
 export function PageEight({ handleNext, handleBack, handleSaveProperty }) {
-  const [coverPhotos, setcoverPhotos] = useState({
-    cover: { name: 'Cover Photo', image: '/cover.jpg' },
-    1: { name: 'Living Room', image: '/bedroom.jpg' },
-    2: { name: 'Bedroom', image: '/image (1).png' },
+  const [coverPhotos, setCoverPhotos] = useState({
+    cover: { name: 'Cover Photo', image: `${process.env.PUBLIC_URL}/cover.jpg` },
+    1: { name: 'Living Room', image: `${process.env.PUBLIC_URL}/bedroom.jpg` },
+    2: { name: 'Bedroom', image: `${process.env.PUBLIC_URL}/image (1).png` },
   });
   const [menuVisible, setMenuVisible] = useState(null);
-  const [propertyName, setPropertyName] = useState('');
   const [errors, setErrors] = useState({});
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [newPhoto, setNewPhoto] = useState({ name: '', file: null });
 
-  // Handle image change logic
   const handleImageChange = (event, roomId) => {
     const file = event.target.files[0];
     if (file) {
       const imageUrl = URL.createObjectURL(file);
-      setcoverPhotos((prevImages) => ({
-        ...prevImages,
-        [roomId]: { ...prevImages[roomId], image: imageUrl },
+      setCoverPhotos((prevPhotos) => ({
+        ...prevPhotos,
+        [roomId]: { ...prevPhotos[roomId], image: imageUrl },
       }));
     }
   };
@@ -29,55 +27,46 @@ export function PageEight({ handleNext, handleBack, handleSaveProperty }) {
     setMenuVisible((prev) => (prev === roomId ? null : roomId));
   };
 
-  // Validate inputs
   const validateInputs = () => {
     let isValid = true;
-    const newErrors = {};
+    const validationErrors = {};
 
-
-
-    // Check if cover photo is uploaded
-    if (!coverPhotos.cover.image || coverPhotos.cover.image === '/cover.jpg') {
-      newErrors.cover = 'Cover Photo is required!';
+    if (!coverPhotos.cover.image || coverPhotos.cover.image.includes('/cover.jpg')) {
+      validationErrors.cover = 'Cover Photo is required!';
       isValid = false;
     }
 
-    setErrors(newErrors);
+    setErrors(validationErrors);
     return isValid;
   };
 
-  // Handle next button click
   const handleNextButtonClick = () => {
-    if (!validateInputs()) return; // Do not proceed if validation fails
+    if (!validateInputs()) return;
 
-    const propertyData = {
-      coverPhotos,
-    };
+    const propertyData = { coverPhotos };
     handleSaveProperty(propertyData);
-    handleNext(); // Proceed to the next step if validation passes
+    handleNext();
   };
 
-  // Delete a photo
   const handleDeletePhoto = (roomId) => {
-    setcoverPhotos((prevImages) => {
-      const updatedImages = { ...prevImages };
-      delete updatedImages[roomId];
-      return updatedImages;
+    setCoverPhotos((prevPhotos) => {
+      const updatedPhotos = { ...prevPhotos };
+      delete updatedPhotos[roomId];
+      return updatedPhotos;
     });
   };
 
-  // Add a new photo
   const handleAddPhoto = () => {
     if (!newPhoto.name.trim() || !newPhoto.file) {
       alert('Please enter a photo name and select a file.');
       return;
     }
 
-    const newPhotoId = Object.keys(coverPhotos).length + 1;
+    const newPhotoId = String(Object.keys(coverPhotos).length);
     const imageUrl = URL.createObjectURL(newPhoto.file);
 
-    setcoverPhotos((prevImages) => ({
-      ...prevImages,
+    setCoverPhotos((prevPhotos) => ({
+      ...prevPhotos,
       [newPhotoId]: { name: newPhoto.name.trim(), image: imageUrl },
     }));
     setNewPhoto({ name: '', file: null });
@@ -113,10 +102,10 @@ export function PageEight({ handleNext, handleBack, handleSaveProperty }) {
             </button>
             {menuVisible === 'cover' && (
               <div className="page-eight-specific-menu-dropdown">
-                <label htmlFor={`room-upload-cover`}>Change Photo</label>
+                <label htmlFor="room-upload-cover">Change Photo</label>
                 <input
                   type="file"
-                  id={`room-upload-cover`}
+                  id="room-upload-cover"
                   style={{ display: 'none' }}
                   onChange={(e) => handleImageChange(e, 'cover')}
                 />
