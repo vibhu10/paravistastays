@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './components/Home/Home';
 
 import  EdifInfluencerProfile from './components/influencer/Edif-Influencer-Profile';
 import Inbox from './components/influencer/Inbox'
@@ -11,6 +10,7 @@ import ProfilePage from './components/profiles/guest/profilePage';
 import AdminHome from './components/profiles/admin/AdminHome';
 import HostProfile from './components/profiles/host/HostProfile';
 import PropertyPage from './components/Home/PropertyPage';
+import Home from './components/Home/Home';
 
 
 
@@ -21,7 +21,7 @@ function App() {
   
         <Routes>
          
-          <Route path="/" element={<Home />} /> 
+          <Route path="/" element={<Home/>} /> 
        
           <Route path="/user-profile" element={<ProfilePage/>} />
           <Route path='/host-Registration' element={<HostRegistration/>}/>

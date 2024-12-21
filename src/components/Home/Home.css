@@ -241,37 +241,221 @@
     width: 100vw; /* Adjusted to match viewport width */
     height: 50vh;
   }
+ 
+ /* filter */
+ .container-filter-buttons {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  /* background-color: #ffffff; */
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  gap: 16px;
+}
+
+.compare-button {
+  background-color: #007d6d;
+  color: #ffffff;
+  border: none;
+  border-radius: 30px;
   
-  .container-filter-buttons .btn {
-    border: none; /* Removes the border from the button */
-    color: grey; /* Changes the font color to grey */
-    
-  }
-  
-  .container-filter-buttons .btn:hover {
-    background-color: transparent;
-    color: #198E78;
-  }
-  .container-filter-buttons{
-    display: flex;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.compare-button:hover {
+  background-color: #005f53;
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.filter-wrapper {
+  display: flex;
+  overflow: hidden;
+  flex: 1;
+  position: relative;
+  margin: 0 12px;
+}
+
+.filter-row {
+  display: flex;
+  gap: 24px;
+  transition: transform 0.4s ease-in-out;
+  will-change: transform;
+}
+
+.filter-item {
+  min-width: 110px;
+  text-align: center;
+  transition: transform 0.2s ease, opacity 0.3s ease;
+}
+
+.filter-item:hover {
+  transform: translateY(-6px);
+  opacity: 0.9;
+  color: none;
+}
+
+.btn {
+  border: none;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.btn-outline-primary {
+  color: #666666;
+  font-size: 14px;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+.btn-outline-primary:hover {
+  color: #007d6d;
+  font-weight: 700;
+}
+
+.bi {
+  font-size: 26px;
+  color: grey;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-outline-primary:hover .bi {
+  color: #007d6d;
+  transform: scale(1.2);
+}
+
+.scroll-button {
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.scroll-button:hover {
+  background-color: #e0e0e0;
+  transform: scale(1.1);
+}
+
+.scroll-button .bi {
+  font-size: 22px;
+  color: #444444;
+  transition: color 0.3s ease;
+}
+
+.scroll-button:hover .bi {
+  color: #007d6d;
+}
+
+/* Active State for Selected Filters */
+.filter-item.active .btn-outline-primary {
+  color: #007d6d;
+  font-weight: 700;
+}
+
+.filter-item.active .bi {
+  color: #007d6d;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .container-filter-buttons {
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: end;
-    justify-content:space-evenly;
-    height: 50vh;
+    padding: 16px;
+    gap: 12px;
   }
-  .container-filter-buttons .compare-button {
-    width: 174px;
-    height: 47px;
-    position: absolute;
-    left: 45px;
-    top: 139px;
-    background: #198E78;
-    color: white;
-    border-radius: 8px;
-  
-  
+
+  .compare-button {
+    margin-bottom: 12px;
   }
-  .container-filter-buttons 
+
+  .scroll-button {
+    width: 40px;
+    height: 40px;
+  }
+
+  .filter-item {
+    min-width: 90px;
+  }
+
+  .bi {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 576px) {
+  .filter-item {
+    min-width: 80px;
+  }
+
+  .compare-button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  .scroll-button {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+
+
+
+/* Filters Container */
+/* Filter Bar Container */
+.filter-bar-container {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 10px 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto; /* Center the bar on the page */
+}
+
+/* Compare Button */
+.compare-button {
+  background-color: #008060;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  margin-right: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.compare-button:hover {
+  background-color: #006644;
+}
+
+
+
+
+  
   /* Body section */
   .home-body {
     padding: 10px;
@@ -310,7 +494,7 @@
  
 
     #hotel-detail {
-      margin-top: 6px;
+      margin-top: 12px;
       height: 40%;
       box-sizing: border-box;
       /* overflow: hidden; */
@@ -690,20 +874,9 @@ button:active {
     font-size: 18px;
   }
 }
-.loading-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.5); /* Dark overlay */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000; /* Ensure it's on top */
-}
 
-.spinner {
-  width: 50px;
-  height: 50px;
-}
+
+
+
+
+

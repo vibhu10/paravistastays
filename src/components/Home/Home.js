@@ -1,23 +1,52 @@
 import "./Home.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+
+
+
 import "bootstrap-icons/font/bootstrap-icons.css";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faGem,
+  faPalette,
+  faWater,
+  faUsers,
+  faEye,
+  faTree,
+  faGamepad,
+  faPeopleRoof,
+  faCity,
+  faLandmark,
+  faSpa,
+  faPersonHiking,
+  faLeaf,
+  faHeart,
+  faWallet,
+  faCalendar,
+  faArrowLeft,
+  faArrowRight,
+} from "@fortawesome/free-solid-svg-icons";
+import Loading from "../Loading";
 
 const filters = [
-  { icon: "bookmark-fill", label: "Featured" },
-  { icon: "house-door", label: "All" },
-  { icon: "graph-up", label: "Trending" },
-  { icon: "images", label: "New" },
-  { icon: "gem", label: "Luxury" },
-  { icon: "bricks", label: "Design" },
-  { icon: "palette", label: "Unique" },
-  { icon: "tree", label: "Nature" },
-  { icon: "eye", label: "Views" },
-  { icon: "house", label: "Playhouse" },
+  { icon: faGem, label: "Luxury" },
+  { icon: faPalette, label: "Design" },
+  { icon: faWater, label: "Waterfront" },
+  { icon: faUsers, label: "Group Stays" },
+  { icon: faEye, label: "Scenic Views" },
+  { icon: faTree, label: "Countryside" },
+  { icon: faGamepad, label: "Game House" },
+  { icon: faPeopleRoof, label: "Family" },
+  { icon: faCity, label: "City" },
+  { icon: faLandmark, label: "Historical" },
+  { icon: faSpa, label: "Wellness" },
+  { icon: faPersonHiking, label: "Adventure" },
+  { icon: faLeaf, label: "Nature" },
+  { icon: faHeart, label: "Romantic" },
+  { icon: faWallet, label: "Budget-Friendly" },
+  { icon: faCalendar, label: "Seasonal" },
 ];
 
 export default function Home() {
@@ -25,52 +54,65 @@ export default function Home() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [signupStep, setSignupStep] = useState(1); // New: Track signup step
-  const [firstName, setFirstName] = useState(""); // New: Separate first name
-  const [lastName, setLastName] = useState(""); // New: Separate last name
-  const [dob, setDob] = useState(""); // New: Date of birth
+  const [signupStep, setSignupStep] = useState(1);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [dob, setDob] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [loginPopup, setLoginPopup] = useState(false);
   const [signupPopup, setSignupPopup] = useState(false);
-
+  const [scrollOffset, setScrollOffset] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [propertyData, setPropertyData] = useState(null);
+  const itemsPerRow = 6;
+  const itemWidth = 100;
+  const maxScroll = (Math.ceil(filters.length / itemsPerRow) - 1) * (itemsPerRow * itemWidth);
   const navigate = useNavigate();
 
-  const [propertyData, setPropertyData] = useState(null);//state for the showing all property
-  console.log(propertyData,"check for data comming from backetd")
-  
-  
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
       setIsAuthenticated(true);
     }
   }, []);
+
   useEffect(() => {
     const fetchPropertyData = async () => {
+      setLoading(true);
       try {
-        const response = await axios.get('https://mhmk2b29-3000.inc1.devtunnels.ms/api/property/allproperties');
-        setPropertyData(response.data); // Update state with fetched data
+        const response = await axios.get(
+          "https://mhmk2b29-3000.inc1.devtunnels.ms/api/property/allproperties"
+        );
+        setPropertyData(response.data);
       } catch (err) {
-        console.error('Error fetching property data:', err);
-        setError('Failed to fetch property data.');
+        console.error("Error fetching property data:", err);
+        setError("Failed to fetch property data.");
+      } finally {
+        setLoading(false);
       }
     };
-
-    fetchPropertyData(); // Automatically fetch data on page load
+    fetchPropertyData();
   }, []);
 
+  const handleScroll = () => {
+    setScrollOffset((prev) => Math.min(prev + itemsPerRow * itemWidth, maxScroll));
+  };
 
+  const handleScrollLeft = () => {
+    setScrollOffset((prev) => Math.max(prev - itemsPerRow * itemWidth, 0));
+  };
 
-
-  function selectedProperty(property) {
+  const selectedProperty = (property) => {
     navigate("/property", { state: { property } });
-  }
-
+  };
 
   const checkEmailExistence = async () => {
     try {
-      const response = await axios.post("https://mhmk2b29-3000.inc1.devtunnels.ms/api/users/signin/check-email", { email });
+      const response = await axios.post(
+        "https://mhmk2b29-3000.inc1.devtunnels.ms/api/users/signin/check-email",
+        { email }
+      );
       if (response.status === 200) {
         setError("");
         return true;
@@ -88,51 +130,34 @@ export default function Home() {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-  
-    // Clear previous error messages
     setError("");
-  
-    // Basic validation for email format
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  
-    // Check if email is provided
     if (!email) {
       setError("Email is required.");
       return;
     }
-  
-    // Validate email format
     if (!emailRegex.test(email)) {
       setError("Please enter a valid email address.");
       return;
     }
-  
-    // Check if the email is available (asynchronous check)
     const isEmailAvailable = await checkEmailExistence();
     if (!isEmailAvailable) {
       setError("Email is already in use.");
       return;
     }
-  
-    // If email passes all checks, proceed with the signup process
     setSignupStep(2);
   };
-  
 
   const handleCompleteSignUp = async () => {
     if (!password || !firstName || !lastName || !dob) {
       setError("All fields are required.");
       return;
     }
-
     try {
-      const response = await axios.post("https://mhmk2b29-3000.inc1.devtunnels.ms/api/users/signup", {
-        email,
-        password,
-        firstName,
-        lastName,
-        dob,
-      });
+      const response = await axios.post(
+        "https://mhmk2b29-3000.inc1.devtunnels.ms/api/users/signup",
+        { email, password, firstName, lastName, dob }
+      );
       alert("Signup completed successfully! You can now log in.");
       setSignupStep(1);
       setSignupPopup(false);
@@ -146,24 +171,21 @@ export default function Home() {
     }
   };
 
-
   const handleLogin = async () => {
     try {
-      const response = await axios.post("https://mhmk2b29-3000.inc1.devtunnels.ms/api/users/signin", {
-        email,
-        password,
-      });
-      console.log(response, "Login response home");
+      const response = await axios.post(
+        "https://mhmk2b29-3000.inc1.devtunnels.ms/api/users/signin",
+        { email, password }
+      );
       localStorage.setItem("token", response.data.token);
-      console.log(response.data.user) // Store JWT in localStorage
-      setIsAuthenticated(true); // Set authenticated state
-      setPopup(false); // Close the main popup
-      setLoginPopup(false); // Close the login-specific popup
-      setError(""); // Clear error on successful login
+      setIsAuthenticated(true);
+      setPopup(false);
+      setLoginPopup(false);
+      setError("");
       alert("Login successful!");
     } catch (err) {
       if (err.response) {
-        setError(err.response.data.error); // Display backend error
+        setError(err.response.data.error);
       } else {
         console.error("Error during login:", err);
         setError("Login failed. Please check your credentials.");
@@ -172,7 +194,7 @@ export default function Home() {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("token"); // Remove JWT token
+    localStorage.removeItem("token");
     setIsAuthenticated(false);
     setShowDropdown(false);
     alert("Logged out successfully!");
@@ -180,22 +202,21 @@ export default function Home() {
 
   const handleSwitchToHosting = () => {
     if (isAuthenticated) {
-      navigate("/host-registration"); // Redirect to HostRegistration
+      navigate("/host-registration");
     } else {
       alert("You need to log in first.");
-      setPopup(true); // Open login popup if not authenticated
+      setPopup(true);
     }
   };
 
   const handleProfileClick = () => {
-    setShowDropdown(false); // Close dropdown
-    navigate("/user-profile"); // Redirect to UserProfile page
+    setShowDropdown(false);
+    navigate("/user-profile");
   };
 
   const toggleLoginPopup = () => {
     setLoginPopup(!loginPopup);
   };
-
 
   const toggleSignupPopup = () => {
     if (!signupPopup) {
@@ -213,9 +234,24 @@ export default function Home() {
     setShowDropdown(!showDropdown);
   };
 
+  const handleFilterClick = async (filter) => {
+    setLoading(true);
+    try {
+      const response = await axios.get(
+        `https://mhmk2b29-3000.inc1.devtunnels.ms/api/property/filtersByPropertyType`,
+        { params: { type: filter.label, page: 1, limit: 20 } }
+      );
+      setPropertyData(response.data);
+    } catch (error) {
+      console.error("Error fetching filtered properties:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="home-container">
-      {/* Header */}
+      {/* Header */}{loading && <Loading/>}
       <div className="header">
         <div className="home-filter">
         <img src={process.env.PUBLIC_URL + '/paradiseLogo.jpeg'} alt="paradise" />
@@ -317,86 +353,73 @@ export default function Home() {
 
         {/* Filter Buttons */}
         <div className="container-filter-buttons">
-          <button className="compare-button">Total | Compare</button>
-          <div className="row justify-content-center">
-            {filters.map((filter, index) => (
-              <div key={index} className="col-auto mb-2">
-                <button className="btn btn-outline-primary d-flex flex-column align-items-center">
-                  <i
-                    className={`bi bi-${filter.icon}`}
-                    style={{ fontSize: "24px", color: "grey" }}
-                  ></i>
-                  <span>{filter.label}</span>
-                </button>
+      <button className="compare-button">3/3 | Compare</button>
+      <button className="scroll-button" onClick={handleScrollLeft}>
+        <FontAwesomeIcon icon={faArrowLeft} />
+      </button>
+      <div className="filter-wrapper">
+        <div
+          className="filter-row"
+          style={{
+            transform: `translateX(-${scrollOffset}px)`,
+            transition: "transform 0.5s ease",
+          }}
+        >
+          {filters.map((filter, index) => (
+            <div key={index} className="filter-item">
+              <button
+                className="btn btn-outline-primary d-flex flex-column align-items-center"
+                onClick={() => handleFilterClick(filter)}
+              >
+                <FontAwesomeIcon icon={filter.icon} size="2x" style={{ color: "gray" }} />
+                <span style={{ color: "gray" }}>{filter.label}</span>
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
+      <button className="scroll-button" onClick={handleScroll}>
+        <FontAwesomeIcon icon={faArrowRight} />
+      </button>
+   
+    </div>
+      </div>
+
+      <div className="home-body">
+        <div className="hotel-data">
+          {propertyData && propertyData.length > 0 ? (
+            propertyData.map((property, index) => (
+              <div key={index} className="hotel-card" onClick={() => selectedProperty(property)}>
+                <img
+                  src={property.coverPhotos?.cover?.image || "https://via.placeholder.com/150"}
+                  alt={`Image of ${property.title || "Unknown Property"}`}
+                />
+                <div id="hotel-detail">
+                  <h3 style={{ color: "#198E78" }}>{property.title || "Unnamed Property"}</h3>
+                  <p>
+                    Check-in: {property.availability?.checkinTime ?
+                      new Date(property.availability.checkinTime).toLocaleTimeString([], {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      }) : "N/A"}
+                  </p>
+                  <p>
+                    Min Nights: {property.availability?.minimumNight || "N/A"} | Max Nights: {property.availability?.maximumNight || "N/A"}
+                  </p>
+                  <p style={{ color: "black", fontSize: "18px", fontWeight: "bold" }}>
+                    ${Math.floor(property.price?.BaseCharge || 0)}/night Total: <span style={{ color: "#198E78" }}>${Math.floor(property.price?.PriceBeforeTax || 0)}</span>
+                  </p>
+                </div>
               </div>
-            ))}
-          </div>
+            ))
+          ) : (
+            <p>No properties available to display.</p>
+          )}
         </div>
       </div>
 
-     {/* Body */}
-{/* Body */}
-<div className="home-body">
-<div className="hotel-data">
-  {propertyData && propertyData.length > 0 ? (
-    propertyData.map((property, index) => (
-      <div key={index} className="hotel-card" onClick={()=>selectedProperty(property)}>
-        {/* Property Cover Image */}
-        <img
-          src={
-            property.coverPhotos?.cover?.image || 
-            "https://via.placeholder.com/150"
-          } 
-          alt={`Image of ${property.title || "Unknown Property"}`} // Handle missing property name
-        />
-        <div id="hotel-detail">
-          {/* Property Title */}
-          <h3 style={{ color: "#198E78" }}>
-            {property.title || "Unnamed Property"}
-          </h3>
-          
-          {/* Check-in Time */}
-          <p>
-            Check-in:{" "}
-            {property.availability?.checkinTime
-              ? new Date(property.availability.checkinTime).toLocaleTimeString([], {
-                  hour: "2-digit",
-                  minute: "2-digit",
-                })
-              : "N/A"}
-          </p>
-
-          {/* Minimum and Maximum Nights */}
-          <p>
-            Min Nights: {property.availability?.minimumNight || "N/A"} | Max Nights:{" "}
-            {property.availability?.maximumNight || "N/A"}
-          </p>
-
-          {/* Pricing Details */}
-          <p
-            style={{
-              color: "black",
-              fontSize: "18px",
-              fontWeight: "bold",
-            }}
-          >
-            ${Math.floor(property.price?.BaseCharge || 0)}/night Total:{" "}
-            <span style={{ color: "#198E78" }}>
-              ${Math.floor(property.price?.PriceBeforeTax || 0)}
-            </span>
-          </p>
-        </div>
-      </div>
-    ))
-  ) : (
-    // Fallback for No Properties
-    <p>No properties available to display.</p>
-  )}
-</div>
 
 
-
-</div>
 
 
       {/* Signup Popup */}
