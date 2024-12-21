@@ -22,7 +22,16 @@ const Header = () => {
     <header className="header-container">
       {/* Logo Section */}
       <div className="logo-section">
-      <img src={process.env.PUBLIC_URL +'/paradiseLogo.jpeg' || '/paradiseLogo.jpeg' } alt="paradise" />
+      <img 
+  src="/paradise.jpeg" 
+  alt="Logo" 
+  style={{
+    width: "100px", // Adjust the width as needed
+    height: "auto", // Maintain aspect ratio
+    display: "block", // Ensure proper alignment
+  }} 
+/>
+
       </div>
 
       {/* Right-Side Options */}

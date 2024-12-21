@@ -254,8 +254,8 @@ export default function Home() {
       {/* Header */}{loading && <Loading/>}
       <div className="header">
         <div className="home-filter">
-        <img src={process.env.PUBLIC_URL + '/paradiseLogo.jpeg'} alt="paradise" />
-
+     
+      <img  src="/paradise.jpeg" />
           <div className="filter"></div>
 
           <button className="filter-hamburger">
@@ -353,36 +353,67 @@ export default function Home() {
 
         {/* Filter Buttons */}
         <div className="container-filter-buttons">
-      <button className="compare-button">3/3 | Compare</button>
-      <button className="scroll-button" onClick={handleScrollLeft}>
-        <FontAwesomeIcon icon={faArrowLeft} />
-      </button>
-      <div className="filter-wrapper">
-        <div
-          className="filter-row"
-          style={{
-            transform: `translateX(-${scrollOffset}px)`,
-            transition: "transform 0.5s ease",
-          }}
-        >
-          {filters.map((filter, index) => (
-            <div key={index} className="filter-item">
-              <button
-                className="btn btn-outline-primary d-flex flex-column align-items-center"
-                onClick={() => handleFilterClick(filter)}
-              >
-                <FontAwesomeIcon icon={filter.icon} size="2x" style={{ color: "gray" }} />
-                <span style={{ color: "gray" }}>{filter.label}</span>
-              </button>
-            </div>
-          ))}
+  <button className="compare-button">3/3 | Compare</button>
+  <button className="scroll-button" onClick={handleScrollLeft}>
+    <FontAwesomeIcon icon={faArrowLeft} />
+  </button>
+  <div className="filter-wrapper">
+    <div
+      className="filter-row"
+      style={{
+        transform: `translateX(-${scrollOffset}px)`,
+        transition: "transform 0.5s ease",
+      }}
+    >
+      {filters.map((filter, index) => (
+        <div key={index} className="filter-item">
+          <button
+            className="btn btn-outline-primary d-flex flex-column align-items-center"
+            onClick={() => handleFilterClick(filter)}
+            onMouseEnter={(e) => {
+              const icon = e.currentTarget.querySelector("svg");
+              if (icon) icon.style.transform = "scale(1.2)";
+            }}
+            onMouseLeave={(e) => {
+              const icon = e.currentTarget.querySelector("svg");
+              if (icon) icon.style.transform = "scale(1)";
+            }}
+            style={{
+              backgroundColor: "transparent",
+              border: "none",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              transition: "transform 0.3s ease",
+            }}
+          >
+            <FontAwesomeIcon
+              icon={filter.icon}
+              size="2x"
+              style={{
+                color: "gray",
+                transition: "transform 0.3s ease, color 0.3s ease",
+              }}
+            />
+            <span
+              style={{
+                color: "gray",
+                transition: "color 0.3s ease",
+              }}
+            >
+              {filter.label}
+            </span>
+          </button>
         </div>
-      </div>
-      <button className="scroll-button" onClick={handleScroll}>
-        <FontAwesomeIcon icon={faArrowRight} />
-      </button>
-   
+      ))}
     </div>
+  </div>
+  <button className="scroll-button" onClick={handleScroll}>
+    <FontAwesomeIcon icon={faArrowRight} />
+  </button>
+</div>
+
       </div>
 
       <div className="home-body">
@@ -466,15 +497,87 @@ export default function Home() {
           <hr className="flex-grow-1" />
         </div>
         <div className="d-grid gap-3">
-          <button className="btn btn-outline-primary d-flex align-items-center justify-content-center">
-            <i className="bi bi-facebook me-2"></i> Continue with Facebook
-          </button>
-          <button className="btn btn-outline-danger d-flex align-items-center justify-content-center">
-            <i className="bi bi-google me-2"></i> Continue with Google
-          </button>
-          <button className="btn btn-outline-dark d-flex align-items-center justify-content-center">
-            <i className="bi bi-apple me-2"></i> Continue with Apple
-          </button>
+        <button
+  className="btn btn-outline-primary d-flex align-items-center justify-content-center"
+  style={{
+    padding: "0.5rem 1rem",
+    fontSize: "0.875rem",
+    lineHeight: "1.2",
+    borderWidth: "1px",
+    borderRadius: "0.25rem",
+    backgroundColor: "transparent",
+    textDecoration: "none",
+  }}
+  onMouseEnter={(e) => {
+    e.target.style.textDecoration = "underline"; // Add underline
+  }}
+  onMouseLeave={(e) => {
+    e.target.style.textDecoration = "none"; // Remove underline
+  }}
+>
+  <i
+    className="bi bi-facebook me-2"
+    style={{
+      fontSize: "1rem",
+    }}
+  ></i>{" "}
+  Continue with Facebook
+</button>
+
+<button
+  className="btn btn-outline-danger d-flex align-items-center justify-content-center"
+  style={{
+    padding: "0.5rem 1rem",
+    fontSize: "0.875rem",
+    lineHeight: "1.2",
+    borderWidth: "1px",
+    borderRadius: "0.25rem",
+    backgroundColor: "transparent",
+    textDecoration: "none",
+  }}
+  onMouseEnter={(e) => {
+    e.target.style.textDecoration = "underline"; // Add underline
+  }}
+  onMouseLeave={(e) => {
+    e.target.style.textDecoration = "none"; // Remove underline
+  }}
+>
+  <i
+    className="bi bi-google me-2"
+    style={{
+      fontSize: "1rem",
+    }}
+  ></i>{" "}
+  Continue with Google
+</button>
+
+<button
+  className="btn btn-outline-dark d-flex align-items-center justify-content-center"
+  style={{
+    padding: "0.5rem 1rem",
+    fontSize: "0.875rem",
+    lineHeight: "1.2",
+    borderWidth: "1px",
+    borderRadius: "0.25rem",
+    backgroundColor: "transparent",
+    textDecoration: "none",
+  }}
+  onMouseEnter={(e) => {
+    e.target.style.textDecoration = "underline"; // Add underline
+  }}
+  onMouseLeave={(e) => {
+    e.target.style.textDecoration = "none"; // Remove underline
+  }}
+>
+  <i
+    className="bi bi-apple me-2"
+    style={{
+      fontSize: "1rem",
+    }}
+  ></i>{" "}
+  Continue with Apple
+</button>
+
         </div>
       </div>
     ) : (

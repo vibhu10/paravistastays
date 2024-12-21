@@ -293,8 +293,8 @@ export default function HostProfile() {
                   {property.type === "listed" ? "Listed" : "In Progress"}
                 </div>
               </div>
-              <div style={{ border: "none" }}>
-                <h3 style={{ color: "#198E78", marginBottom: "5px" }}>
+              <div style={{ border: "none", }}>
+                <h3 style={{ color: "#198E78", marginTop: "5px" }}>
                   {property.internalName}
                 </h3>
                 <p style={{ marginTop: "0" }}>{property.title}</p>
@@ -321,7 +321,7 @@ export default function HostProfile() {
       <header className="host-profile-header">
   <img
     className="host-profile-logo"
-    src="/48564e5fe8898cf62b0bbf42276d6cf3.jpeg"
+    src="/paradise.jpeg"
     alt="Paradise"
   />
   <nav className="host-profile-nav">
