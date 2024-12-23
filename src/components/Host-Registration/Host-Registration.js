@@ -50,7 +50,7 @@ async function savePropertyDataToServer() {
         const token = localStorage.getItem('token');
 
         // Make the request to the backend with the token
-        const response = await fetch("http://localhost:3000/api/property/registration", {
+        const response = await fetch("https://mhmk2b29-3000.inc1.devtunnels.ms/api/property/registration", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

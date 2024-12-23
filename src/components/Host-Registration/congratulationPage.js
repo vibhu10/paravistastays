@@ -18,7 +18,7 @@ export default function CongratulationsPage({ name }){
           home and helping to create incredible experiences for our guests.
         </p>
         <div className="signature">
-          <p>Brian Chesky, CEO</p>
+          <p>paravistastays</p>
         </div>
         <button onClick={handleButtonClick} className="cta-button">
           Let’s get started
