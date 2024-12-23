@@ -42,28 +42,109 @@
   }
   /*homw filter hamburger*/
   
-  .filter-hamburger{
+  .filter-hamburger {
     position: relative;
     left: 61px;
     width: 64px;
     height: 64px;
-    border-radius: 8px;
+    border-radius: 12px; /* Rounded corners for a soft look */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: #198E78;
-    gap: 5px;
+    background: #198E78; /* The primary green color */
+    gap: 6px; /* Increased gap for cleaner spacing */
     color: white;
-    margin:5px
-  }
-  .filter-hamburger .line {
-    width: 30px;
-    height: 3px;
-    background-color: white;
-    border-radius: 2px;
+    margin: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+    transition: all 0.3s ease; /* Smooth transition for all properties */
   }
   
+  /* Hover effect */
+  .filter-hamburger:hover {
+    transform: scale(1.1); /* Slightly enlarges on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Deeper shadow on hover */
+    background: #147b5b; /* Slightly darker shade on hover */
+  }
+  
+  /* The lines of the hamburger */
+  .filter-hamburger .line {
+    width: 32px; /* Slightly wider lines for better visibility */
+    height: 4px; /* Thicker lines for better visual impact */
+    background-color: white;
+    border-radius: 2px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  
+  /* Hover effect on the lines */
+  .filter-hamburger:hover .line {
+    background-color: #FFDC5B; /* Change lines color to yellow on hover */
+  }
+  
+  /* Add a little animation on hover for the lines */
+  .filter-hamburger .line:nth-child(1) {
+    transform-origin: top left;
+  }
+  
+  .filter-hamburger .line:nth-child(2) {
+    transform-origin: center;
+  }
+  
+  .filter-hamburger .line:nth-child(3) {
+    transform-origin: bottom left;
+  }
+  
+  /* Optional: Add a smooth transition when clicking the button */
+  .filter-hamburger:active .line:nth-child(1) {
+    transform: rotate(45deg);
+  }
+  
+  .filter-hamburger:active .line:nth-child(2) {
+    transform: scale(0.6); /* Middle line disappears on click */
+  }
+  
+  .filter-hamburger:active .line:nth-child(3) {
+    transform: rotate(-45deg);
+  }
+  
+  /* Optional: Add a label (filter) that appears on hover */
+  .filter-hamburger .filter {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    opacity: 0; /* Hidden by default */
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  /* Show the label when hovering over the hamburger */
+  .filter-hamburger:hover .filter {
+    opacity: 1; /* Show the label */
+    transform: translateX(-50%) translateY(20px); /* Animate label position */
+  }
+
+
+/* Enhanced Hamburger Filter Modal */
+.modal-container-Hamburger-Filter{
+  width: 500px;
+  top: 130px;
+  right: 514px;
+  position: absolute;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transform: translateY(-20px);
+  opacity: 1;
+  transition: all 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+
   
   
   /* this is hamburger menu */
@@ -482,7 +563,7 @@
 ;
   flex-direction: column;
   overflow: hidden;
-  margin: 10px;
+  margin: 22px;
 }
   .hotel-card img {
     object-fit: cover;
@@ -842,9 +923,6 @@
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
 } */
-
-
-
 button:active {
   transform: translateY(0);
 }

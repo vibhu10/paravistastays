@@ -112,4 +112,19 @@
     position: absolute;
     left: -15px;
     top: -5px;
+}.page-three-box-icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px; /* Adjust based on your design */
+  margin-bottom: 10px; /* Spacing between the icon and title */
+}
+
+.page-three-box-icon {
+  font-size: 3rem; /* Increase the size of the icons */
+  color: #555; /* Default color for icons */
+}
+
+.page-three-box.selected .page-three-box-icon {
+  color: green; /* Highlight icon when selected */
 }

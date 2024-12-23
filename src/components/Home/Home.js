@@ -29,6 +29,7 @@ import {
   faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
 import Loading from "../Loading";
+import HamburgerFilter from "./features/HamburgerFilter";
 
 const filters = [
   { icon: faGem, label: "Luxury" },
@@ -50,6 +51,7 @@ const filters = [
 ];
 
 export default function Home() {
+  const[hamburgerPopUp,setHanburgerPopUp]=useState(false)
   const [popup, setPopup] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -65,6 +67,9 @@ export default function Home() {
   const [scrollOffset, setScrollOffset] = useState(0);
   const [loading, setLoading] = useState(false);
   const [propertyData, setPropertyData] = useState(null);
+
+  
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const itemsPerRow = 6;
   const itemWidth = 100;
   const maxScroll = (Math.ceil(filters.length / itemsPerRow) - 1) * (itemsPerRow * itemWidth);
@@ -249,6 +254,36 @@ export default function Home() {
     }
   };
 
+
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+  const fetchFilteredProperties = async (filterData) => {
+    console.log(filterData,"click")
+    try {
+      const response = await axios.post(
+        'https://mhmk2b29-3000.inc1.devtunnels.ms/api/property/advancedfilter',  // Your API endpoint
+        filterData,  // Send the filter data as JSON in the request body
+        {
+          headers: {
+            'Content-Type': 'application/json',  // Ensures that the body is JSON
+          },
+        }
+      );
+      console.log('Filtered properties:', response.data);
+    } catch (error) {
+      console.error('Error fetching properties:', error);
+    }
+  };
+  
+
+
+
   return (
     <div className="home-container">
       {/* Header */}{loading && <Loading/>}
@@ -257,12 +292,30 @@ export default function Home() {
      
       <img  src="/paradise.jpeg" />
           <div className="filter"></div>
+        
+          <div>
+      {/* Filter Hamburger Button */}
+      <button className="filter-hamburger" onClick={toggleMenu}>
+        <div className="line"></div>
+        <div className="line short"></div>
+        <div className="line"></div>
+        Filter
+      </button>
 
-          <button className="filter-hamburger">
-            <div className="line"></div>
-            <div className="line short"></div>
-            <div className="line"></div>filter
-          </button>
+      {/* Modal for Hamburger Filter */}
+      {isMenuOpen && (
+        <div className="modal-overlay" onClick={closeMenu}>
+          <div className="modal-container-Hamburger-Filter" onClick={(e) => e.stopPropagation()}>
+            <button className="close-button" onClick={closeMenu}>
+              &times;
+            </button>
+          <HamburgerFilter  filterdata ={fetchFilteredProperties} /> {/* Render the HamburgerFilter component */}
+          </div>
+        </div>
+      )}
+    </div>
+
+
 
           <div className="log-in-container">
             <button className="switch-to-hosting-button" onClick={handleSwitchToHosting}>
