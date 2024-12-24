@@ -17,12 +17,12 @@
   
   .home-filter {
     background-color: black;
-    width: 100vw;
+   
     height: 50vh;
     display: flex;
    justify-content: center;
    align-items: center;
-  
+   margin-left: 160px;
   
   }
   .home-filter img{
@@ -44,7 +44,7 @@
   
   .filter-hamburger {
     position: relative;
-    left: 61px;
+    
     width: 64px;
     height: 64px;
     border-radius: 12px; /* Rounded corners for a soft look */
@@ -559,12 +559,22 @@
 .hotel-card {
   width: 400px;
   height: 400px;
-  display: flex
-;
+  display: flex;
   flex-direction: column;
   overflow: hidden;
   margin: 22px;
+  border-radius: 12px; /* Adds rounded corners */
+ 
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Adds hover effects */
+  cursor: pointer; /* Changes cursor to a hand sign on hover */
 }
+
+.hotel-card:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  /* Enhanced shadow on hover */
+}
+
+
   .hotel-card img {
     object-fit: cover;
     width: 100%;

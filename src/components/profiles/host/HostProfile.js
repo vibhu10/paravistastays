@@ -294,7 +294,7 @@ export default function HostProfile() {
                 </div>
               </div>
               <div style={{ border: "none", }}>
-                <h3 style={{ color: "#198E78", marginTop: "5px" }}>
+                <h3 style={{ color: "#198E78", marginTop: "15px" }}>
                   {property.internalName}
                 </h3>
                 <p style={{ marginTop: "0" }}>{property.title}</p>

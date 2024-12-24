@@ -9,8 +9,9 @@ import ProfilePage from './components/profiles/guest/profilePage';
 
 import AdminHome from './components/profiles/admin/AdminHome';
 import HostProfile from './components/profiles/host/HostProfile';
-import PropertyPage from './components/Home/PropertyPage';
+
 import Home from './components/Home/Home';
+import DisplayProperty from './components/Home/features/DisplayProperty';
 
 
 
@@ -31,7 +32,7 @@ function App() {
           
           <Route path='/hostlogin' element={<HostProfile/>}/>
          <Route path='/superAdmin' element={<AdminHome/>}/>
-         <Route path='/property' element={<PropertyPage/>}/>
+         <Route path='/property' element={ <DisplayProperty/>}/>
          
 
           </Routes>

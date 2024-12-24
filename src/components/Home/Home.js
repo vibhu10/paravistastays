@@ -1,8 +1,5 @@
 import "./Home.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-
-
-
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -30,6 +27,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Loading from "../Loading";
 import HamburgerFilter from "./features/HamburgerFilter";
+import SearchBar from "./features/SearchBar";
+import DisplayProperty from "./features/DisplayProperty";
 
 const filters = [
   { icon: faGem, label: "Luxury" },
@@ -110,6 +109,7 @@ export default function Home() {
   };
 
   const selectedProperty = (property) => {
+   
     navigate("/property", { state: { property } });
   };
 
@@ -292,8 +292,8 @@ export default function Home() {
         <div className="home-filter">
      
       <img  src="/paradise.jpeg" />
-          <div className="filter"></div>
-        
+          {/* <div className="filter"></div> */}
+        <SearchBar/>
           <div>
       {/* Filter Hamburger Button */}
       <button className="filter-hamburger" onClick={toggleMenu}>
