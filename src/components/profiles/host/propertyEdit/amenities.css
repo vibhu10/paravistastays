@@ -148,7 +148,10 @@
   color: white;
   transition: background-color 0.3s, transform 0.2s;
 }
-
+.btn-btn-primary{
+  background-color: #048968;
+  color: white;
+}
 .btn-primary:hover {
   background-color: #048968;
   transform: scale(1.05);

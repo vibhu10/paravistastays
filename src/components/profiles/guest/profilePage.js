@@ -10,7 +10,7 @@ import LoginSecurity from './LoginSecurity';
 import Reservations from './Reservations';
 import Payments from './Payments';
 import ListYourProperty from './ListYourProperty';
-import BecomeInfluencer from './BecomeInfluencer';
+import BecomeInfluencer from '../influencer/BecomeInfluencer';
 import Notifications from './Notifications';
 import ReferralProgram from './ReferralProgram';
 

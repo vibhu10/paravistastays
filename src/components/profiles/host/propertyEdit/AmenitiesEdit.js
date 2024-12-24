@@ -352,7 +352,7 @@ export default function AmenitiesEdit({ selectedPropertyData, onSave }) {
         <button className="btn btn-secondary" onClick={handleReset}>
           Cancel
         </button>
-        <button className="btn btn-primary" onClick={handleSave}>
+        <button className="btn-btn-primary" onClick={handleSave}>
           Save
         </button>
       </div>

@@ -87,6 +87,7 @@ export default function Home() {
       setLoading(true);
       try {
         const response = await axios.get(
+     
           "https://mhmk2b29-3000.inc1.devtunnels.ms/api/property/allproperties"
         );
         setPropertyData(response.data);
@@ -305,6 +306,7 @@ export default function Home() {
       {/* Modal for Hamburger Filter */}
       {isMenuOpen && (
         <div className="modal-overlay" onClick={closeMenu}>
+         
           <div className="modal-container-Hamburger-Filter" onClick={(e) => e.stopPropagation()}>
             <button className="close-button" onClick={closeMenu}>
               &times;
