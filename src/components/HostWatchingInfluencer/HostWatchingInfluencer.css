@@ -1,0 +1,29 @@
+.HostWatchingInfluencer-container {
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+  
+  .HostWatchingInfluencer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+  }
+  
+  .HostWatchingInfluencer-logo {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .HostWatchingInfluencer-navigation ul {
+    display: flex;
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  
+  

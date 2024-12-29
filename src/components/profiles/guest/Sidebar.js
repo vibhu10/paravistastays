@@ -1,4 +1,4 @@
-import React, { useDebugValue } from 'react';
+import React, { useDebugValue, useEffect, useState } from 'react';
 import './Sidebar.css';
 import {
   FaUser,
@@ -13,7 +13,34 @@ import {
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const Sidebar = ({ activeComponent, setActiveComponent, userData }) => {
+  const [isHost,setIsHost]=useState(false);
+
   const navigate = useNavigate(); // Initialize useNavigate
+
+
+  useEffect(() => {
+    // Trigger API call only when userData.email changes or is available
+    if (userData?.email) {
+      fetchUserProperties(userData.email);
+    }
+  }, [userData.email]); // Depend on userData.email
+
+  const fetchUserProperties = async (email) => {
+    try {
+      const response = await fetch(
+        `https://mhmk2b29-3000.inc1.devtunnels.ms/api/property/checkUserHaveProperty?email=${email}`
+      );
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+      }
+      const data = await response.json();
+      setIsHost(data);
+    } catch (error) {
+      console.error('Error fetching user properties:', error);
+    }
+  };
+
+
 
   return (
     <div className="sidebar-profilePage-container">
@@ -43,7 +70,7 @@ const Sidebar = ({ activeComponent, setActiveComponent, userData }) => {
             Before you book or host on Paradise, you'll need to complete this step.
           </p>
           <button className="btn-verify">Get verified</button>
-          {userData.isHost === 'true' ? (
+          {isHost ===true ? (
             <button
               className="btn-switch"
               onClick={() => navigate('/hostlogin')} // Navigate to /hostlogin

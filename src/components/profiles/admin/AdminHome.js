@@ -34,7 +34,7 @@ export default function AdminHome() {
             {/* Sidebar */}
             <aside className="adminHome-sidebar">
                 <img
-                    src="/48564e5fe8898cf62b0bbf42276d6cf3.jpeg"
+                    src="/paradise.jpeg"
                     alt="Paradise Logo"
                     className="adminHome-logo"
                 />

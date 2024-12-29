@@ -12,6 +12,7 @@ import HostProfile from './components/profiles/host/HostProfile';
 
 import Home from './components/Home/Home';
 import DisplayProperty from './components/Home/features/DisplayProperty';
+import HostWatchingInfluencer from './components/HostWatchingInfluencer/HostWatchingInfluencer';
 
 
 
@@ -33,8 +34,7 @@ function App() {
           <Route path='/hostlogin' element={<HostProfile/>}/>
          <Route path='/superAdmin' element={<AdminHome/>}/>
          <Route path='/property' element={ <DisplayProperty/>}/>
-         
-
+         <Route path='/HostWatchingInfluecer' element={<HostWatchingInfluencer/>}/>
           </Routes>
       </div>
     </Router>

@@ -30,7 +30,7 @@ export default function WifiDetails({ onSave, selectedPropertyData }) {
 
     return (
         <div className="wifi-details-container">
-            <h3>WiFi Details</h3>
+            <h3 style={{fontSize:"24px"}}>WiFi Details</h3>
             <p>Create a guidebook to easily share local tips with guests.</p>
 
             <div className="input-group">

@@ -1,0 +1,373 @@
+/* Wrapper Styles */
+.influencerdata-wrapper {
+    font-family: Arial, sans-serif;
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 1200px;
+}
+
+/* Top Bar */
+.influencerdata-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: #f8f9fa;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.influencerdata-btn {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    gap: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.influencerdata-btn:hover {
+    background-color: #e6e6e6;
+}
+
+.influencerdata-search-container {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    margin: 0 20px;
+    gap: 10px;
+}
+
+.influencerdata-search-input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.influencerdata-dropdown {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.influencerdata-filter-btn {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    gap: 8px;
+}
+
+.influencerdata-heart-icon {
+    color: red;
+}
+
+/* Cards Grid */
+.influencerdata-container {
+    display: flex;
+    justify-content: center;
+}
+
+.influencerdata-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    width: 100%;
+}
+
+/* Card Styles */
+.influencerdata-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #fff;
+    transition: box-shadow 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    cursor: pointer; /* Add hand cursor effect */
+}
+
+.influencerdata-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    cursor: pointer; /* Ensure cursor is changed on hover */
+}
+
+.influencerdata-image {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    overflow: hidden;
+}
+
+.influencerdata-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.influencerdata-heart {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: white;
+    padding: 4px 6px;
+    border-radius: 50%;
+    font-size: 14px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.influencerdata-heart:hover {
+    background-color: #f8f9fa;
+}
+
+/* Card Content */
+.influencerdata-card-content {
+    padding: 16px;
+}
+
+.influencerdata-card-content h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 0 8px;
+}
+
+.influencerdata-rating {
+    font-size: 14px;
+    color: #888;
+    margin: 0 0 8px;
+}
+
+.influencerdata-rating span {
+    color: #555;
+}
+
+.influencerdata-name {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0 0 8px;
+}
+
+.influencerdata-socials {
+    display: flex;
+    gap: 10px;
+    font-size: 16px;
+    margin: 8px 0;
+}
+
+.influencerdata-socials svg {
+    color: #888;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.influencerdata-socials svg:hover {
+    color: #333;
+}
+
+.influencerdata-followers {
+    font-size: 14px;
+    color: #666;
+    margin-top: 4px;
+}
+/* Popup Overlay */
+.inpopup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Slightly darker for emphasis */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* Popup Container */
+  .inpopup-container {
+    background-color: #ffffff;
+    width: 450px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.3s ease-in-out;
+    overflow: hidden;
+  }
+  
+  /* Header */
+  .inpopup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #e0e0e0;
+    background: #f9f9f9;
+  }
+  
+  .inpopup-header h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: 600;
+  }
+  
+  .inpopup-close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  
+  .inpopup-close-btn:hover {
+    color: #555;
+  }
+  
+  /* Content */
+  .inpopup-content {
+    padding: 20px;
+  }
+  
+  .inpopup-content h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 15px;
+  }
+  
+  .inpopup-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+  }
+  
+  .inpopup-grid-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    background: #f4f4f4;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+    text-align: center;
+    font-weight: 500;
+  }
+  
+  .inpopup-grid-item:hover {
+    background-color: #e8f4ff; /* Subtle blue hover */
+    border-color: #8dcff5; /* Match hover effect */
+    color: #333;
+  }
+  
+  .inpopup-icon {
+    font-size: 1.8rem;
+    color: #666;
+    margin-bottom: 8px;
+  }
+  
+  /* Footer */
+  .inpopup-footer {
+    margin-top: 20px;
+  }
+  
+  .inpopup-footer h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 10px;
+  }
+  
+  .inpopup-input {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: border-color 0.3s;
+  }
+  
+  .inpopup-input:focus {
+    border-color: #8dcff5;
+    outline: none;
+  }
+  
+  /* Fade-in Animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* Button Styling for Consistency */
+  .influencerdata-filter-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .influencerdata-filter-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Add Some Spacing and Modern Look to Cards */
+  .influencerdata-card {
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    background: #fff;
+  }
+  
+  .influencerdata-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Rating Style */
+  .influencerdata-rating {
+    color: #f5a623; /* Gold star color */
+    font-weight: 500;
+  }
+  
+  /* Better Social Icon Styling */
+  .influencerdata-socials svg {
+    margin: 0 5px;
+    color: #666;
+    transition: color 0.2s;
+  }
+  
+  .influencerdata-socials svg:hover {
+    color: #007bff;
+  }
+  

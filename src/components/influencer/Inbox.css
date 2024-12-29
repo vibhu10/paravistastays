@@ -1,398 +1,664 @@
-.inbox {
-  
-    height: 100vh;
-    font-family: Arial, sans-serif;
-  }
+/* Inbox.css */
 
-
-  .view-offer-popup{
-    width:35%;
-    height: 70%;
-    border: 1px solid gray;
-    border-radius: 10px;
-    position: absolute;
-    top:100px;
-    left: 40%;
-    background-color: white;
-    z-index: 100;
-  }
-  
-
-
-
-
-/* General popup styles */
-.view-offer-popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000; /* Ensure popup is above other content */
-  }
-  
-  .popup-content {
-    background: white;
-    border-radius: 10px;
-    width: 500px;
-    max-width: 100%;
-    text-align: center;
-    padding: 20px;
-    position: relative;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  }
-  
-  .close-btn {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 24px;
-    background: none;
-    border: none;
-    color: #000;
-    cursor: pointer;
-  }
-  
-  /* Popup image */
-  .popup-image {
-    width: 100%;
-    border-radius: 10px;
-  }
-  
-  /* Titles and text */
-  .popup-title {
-    font-size: 18px;
-    margin: 20px 0 10px;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .popup-heading {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .popup-description {
-    font-size: 16px;
-    margin-bottom: 20px;
-  }
-  
-  .popup-description span {
-    color: #28a745; /* Highlighted green text for discount */
-  }
-  
-  .popup-limited-time {
-    font-size: 14px;
-    color: #999;
-    margin-bottom: 20px;
-  }
-  
-  .popup-limited-time span {
-    color: #28a745;
-    font-weight: bold;
-  }
-  
-  /* Button styles */
-  .popup-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px 0;
-  }
-  
-  button {
-    padding: 10px 15px;
-    border-radius: 5px;
-    border: 2px solid transparent;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  .preview-btn {
-    border-color: #17a2b8;
-    color: #17a2b8;
-    background: none;
-  }
-  
-  .accept-btn {
-    border-color: #28a745;
-    color: white;
-    background-color: #28a745;
-    width: 240px;
-    margin-right: 10px;
-  }
-  
-  .decline-btn {
-    border-color: #dc3545;
-    color: #dc3545;
-    background: none;
-    position: relative;
-    width: 240px;
-  }
-  
-  .counter-btn {
-    border-color: #6c757d;
-    color: #6c757d;
-    background: none;
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  /* Avatar inside decline button */
-  .avatar-image {
-    position: absolute;
-    right: -40px;
-    top: 50%;
-    transform: translateY(-50%);
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-  }
-  
-
-
-
-
-
-
-
-  /**8*************************************/
-  .header-influencer-inbox {
-    background-color: #080808;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    height: 10%;
-    width: 100vw;
-  }
-  
-  .header-influencer-inbox-left h1 {
-    margin: 0;
-  }
-  .header-influencer-inbox img{
-   
-        width: 240px;
-        height: 76px;
-        margin-left: 10px;
-        /* position: absolute;
-        left: 43px; */
-    
-  }
-.influencer-inbox-body{
-
-display: flex;
-height: 90vh;
-width: 100vw;
-flex-wrap: wrap;
+/* General Layout */
+.inbox-container {
+  display: flex;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  overflow: hidden;
 }
 
-  .sidebar {
-    height: 100%;
-    width: 20%;
-    background-color: #f5f5f5;
-    padding: 20px;
-    border-right: 1px solid #ddd;
-  }
-  
-  .search-bar {
-    margin-bottom: 20px;
-  }
-  
-  .search-bar input {
-    width: 100%;
-    padding: 10px;
-    border-radius: 20px;
-    border: 1px solid #ccc;
-  }
-  
-  .message-sidebar {
-    
-    overflow-y: auto;
-  }
-  
-  .chat-preview {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    cursor: pointer;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .chat-preview:hover,
-  .chat-preview.active {
-    background-color: #e6f7ff;
-  }
-  
-  .avatar {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 10px;
-  }
-  
-  .chat-info {
-    flex-grow: 1;
-  }
-  
-  .chat-info h4 {
-    margin: 0;
-    font-size: 16px;
-  }
-  
-  .chat-info p {
-    margin: 5px 0;
-    color: #666;
-    font-size: 14px;
-  }
-  
-  .chat-info .date {
-    float: right;
-    font-size: 12px;
-    color: #999;
-  }
-  
-  .chat-container {
-width:80%;
-height: 90vh;
-display: flex;
+/* Sidebar */
+.inbox-sidebar {
+  width: 30%;
+  background-color: #ffffff;
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 
-flex-direction: column;
-flex-wrap: wrap;
-  }
-  
-  .chat-window {
-    width: 100%;
-    display: flex;
-    flex-direction:column;
-  
-    height: 90%;
+.inbox-sidebar h2 {
+  margin: 0;
+  font-size: 24px;
+  color: #333333;
+}
 
-  }
-  
-  .chat-window .header {
-    height: 15%;
-    width: 100%;
-    border-bottom: 1px solid gray;
-    display: flex;
-    flex-direction: row;
-    /* display: flex; */
-    justify-content: space-between;
-    align-items: center;
-    padding-left: 30px;
-  }
-  
-  .chat-window .header .avatar {
-    width: 60px;
-    height: 60px;
-    margin-right: 10px;
-  }
-  
-  .messages {
-   width: 100%;
-   height: 70%;
-   padding-left:30px ;
-   padding-top: 30px;
-  }
-  .messages {
-    display: flex;
+.inbox-search {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  width: 100%;
+}
+
+.inbox-tabs {
+  display: flex;
+  gap: 10px;
+}
+
+.inbox-tab {
+  flex: 1;
+  padding: 10px 0;
+  text-align: center;
+  border: none;
+  background-color: #f5f5f5;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.inbox-tab.active {
+  background-color: #198e78;
+  color: white;
+}
+
+.inbox-messages-list {
+  overflow-y: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.inbox-message-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.inbox-message-item:hover {
+  background-color: #f1f1f1;
+}
+
+.inbox-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.inbox-message-details {
+  flex: 1;
+}
+
+.inbox-name {
+  font-weight: bold;
+  margin: 0;
+  font-size: 16px;
+}
+
+.inbox-preview {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.inbox-location {
+  font-size: 12px;
+  color: #aaa;
+}
+
+.inbox-date {
+  font-size: 12px;
+  color: #aaa;
+}
+
+/* Chat */
+.inbox-chat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.inbox-chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  border-bottom: 1px solid #f1f1f1;
+  background-color: #ffffff;
+}
+
+.chat-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.chat-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 10px;
+  flex: 1;
+}
+
+.view-offer-button {
+  padding: 8px 16px;
+  background-color: #198e78;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.view-offer-button:hover {
+  background-color: #157c63;
+}
+
+.inbox-chat-body {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.chat-date {
+  text-align: center;
+  font-size: 12px;
+  color: #aaa;
+  margin-bottom: 10px;
+}
+
+.chat-message {
+  max-width: 70%;
+  padding: 10px 15px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.chat-message.received {
+  background-color: #f1f1f1;
+  align-self: flex-start;
+}
+
+.chat-message.sent {
+  background-color: #d3f1d8;
+  align-self: flex-end;
+}
+
+.chat-time {
+  font-size: 10px;
+  color: #aaa;
+  text-align: right;
+}
+
+.inbox-chat-footer {
+  display: flex;
+  padding: 10px 20px;
+  border-top: 1px solid #f1f1f1;
+  background-color: #ffffff;
+}
+
+.chat-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.chat-send-button {
+  margin-left: 10px;
+  padding: 10px 15px;
+  background-color: #198e78;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.chat-send-button:hover {
+  background-color: #157c63;
+}
+
+/* Highlight active message */
+.inbox-message-item.active-message {
+  background-color: lightgray;
+  border-left: 4px solid #198e78;
+}
+
+.inbox-message-item.active-message:hover {
+  background-color: #d9f2d9;
+}
+
+/* Popup Styles */
+.inbox-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.inbox-popup {
+  background: white;
+  border-radius: 12px;
+  width: 420px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  position: relative;
+}
+
+.inbox-close-popup {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #666;
+}
+
+.inbox-popup-image img {
+  width: 100%;
+  height: auto;
+}
+
+.inbox-popup-content {
+  padding: 20px;
+}
+
+.inbox-popup h3 {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.inbox-popup-title {
+  font-size: 20px;
+  color: #444;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.inbox-popup p {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.inbox-popup-expiry {
+  font-size: 13px;
+  color: #777;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.inbox-popup-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.inbox-offer-button {
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.inbox-offer-button.inbox-preview {
+  background: white;
+  color: #007bff;
+  border: 1px solid #007bff;
+}
+
+.inbox-offer-button.inbox-preview:hover {
+  background: #007bff;
+  color: white;
+}
+
+.inbox-offer-button.inbox-accept {
+  background: #28a745;
+  color: white;
+  border: 1px solid #28a745;
+}
+
+.inbox-offer-button.inbox-accept:hover {
+  background: #218838;
+  border-color: #218838;
+}
+
+.inbox-offer-button.inbox-decline {
+  background: white;
+  color: #dc3545;
+  border: 1px solid #dc3545;
+}
+
+.inbox-offer-button.inbox-decline:hover {
+  background: #dc3545;
+  color: white;
+}
+
+.inbox-offer-button.inbox-counter {
+  background: white;
+  color: #ffc107;
+  border: 1px solid #ffc107;
+}
+
+.inbox-offer-button.inbox-counter:hover {
+  background: #ffc107;
+  color: white;
+}
+
+
+
+/* preview popup */
+
+
+/* Preview Popup Styles */
+
+/* General Popup Overlay */
+.inbox-popup-overlay-1 {
+  position: fixed;
+  top: 33px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.inbox-popup-overlay-2 {
+  position: absolute;
+  top: 263px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Main Popup */
+.inbox-preview-popup {
+  background: white;
+  border-radius: 12px;
+  width: 450px;
+  max-width: 95%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  position: relative;
+}
+
+/* Close Button */
+.inbox-close-popup {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #666;
+}
+
+/* Header */
+.inbox-preview-header {
+  padding: 15px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.inbox-preview-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+  color: #333;
+}
+
+.inbox-checkin-info {
+  font-size: 14px;
+  margin-top: 8px;
+  color: #333;
+}
+
+/* Content and Image */
+.inbox-preview-body {
+  padding: 15px;
+}
+
+.inbox-preview-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+/* Details Section */
+.inbox-preview-details {
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+  font-size: 14px;
+  color: #555;
+  margin: 0 10px 15px;
+}
+
+.inbox-preview-details div p {
+  margin: 5px 0;
+}
+
+.inbox-booking-date {
+  font-size: 14px;
+  color: #555;
+  margin: 10px 0;
+}
+
+/* Offer Details Section */
+.inbox-offer-details {
+  background: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 14px;
+  text-align: left;
+}
+
+.inbox-offer-title {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.inbox-offer-condition {
+  font-style: italic;
+  margin-top: 10px;
+}
+
+/* Things to Know Section */
+.things-to-know-popup {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.things-to-know-title {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.things-to-know-columns {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.things-to-know-column {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.things-to-know-column h4 {
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.things-to-know-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.things-to-know-column ul li {
+  font-size: 14px;
+  margin: 5px 0;
+  color: #555;
+}
+
+.things-to-know-additional h4 {
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.things-to-know-additional p {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Reservation Details Section */
+.reservation-details-popup {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+  text-align: left;
+}
+
+.reservation-details-popup h3 {
+  font-size: 1.25rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.reservation-details-popup p {
+  font-size: 0.9rem;
+  margin: 5px 0;
+  color: #555;
+}
+
+.reservation-details-popup a {
+  color: #007BFF;
+  text-decoration: underline;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.reservation-actions a {
+  display: block;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #007BFF;
+  text-decoration: underline;
+}
+
+/* Hosted By Section */
+.hosted-by-popup {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+  text-align: left;
+}
+
+.host-details {
+  display: flex;
+  align-items: center;
+}
+
+.host-image {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.host-details div p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Payment Info Section */
+.payment-info-popup {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+  text-align: left;
+}
+
+.payment-info-popup h3 {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.payment-info-popup p {
+  font-size: 0.9rem;
+  margin: 5px 0;
+  color: #555;
+}
+
+/* Contact Support */
+.contact-support {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.contact-support button {
+  background: #007BFF;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.contact-support button:hover {
+  background: #0056b3;
+}
+
+@media (max-width: 768px) {
+  .inbox-container {
     flex-direction: column;
-    gap: 10px;
+  }
+
+  .inbox-sidebar {
+    width: 100%;
     padding: 10px;
-    max-height: 100vh; /* Ensures the messages section takes up full height */
-    overflow-y: auto; /* Allows scrolling for overflowing content */
   }
-  
-  /* Common styles for all messages */
-  .message {
-    display: inline-block;
-    max-width: 75%; /* Max width for messages, adjusts for different screen sizes */
-    padding: 10px 20px;
-    border-radius: 20px;
-    position: relative;
-    word-wrap: break-word; /* Ensures long words are broken and wrapped */
-    margin-bottom: 10px;
-    font-size: 14px;
+
+  .inbox-chat {
+    width: 100%;
   }
-  
-  /* Sent messages by the user */
-  .sent {
-    background-color: #dcf8c6; /* Example light green for sent messages */
-    align-self: flex-end; /* Aligns the message to the right */
-    color: #000; /* Text color for sent messages */
-  }
-  
-  /* Received messages from others */
-  .received {
-    background-color: #f1f1f1; /* Example light gray for received messages */
-    align-self: flex-start; /* Aligns the message to the left */
-    color: #000; /* Text color for received messages */
-  }
-  
-  /* Time for each message */
-  .message .time {
-    display: block;
-    font-size: 11px;
-    color: #999; /* Light gray for the time */
-    margin-top: 5px;
-    text-align: right; /* Aligns the time text to the right of the message */
-  }
-  
-  
-  .message .time {
-    display: block;
-    text-align: right;
-    font-size: 12px;
-    margin-top: 5px;
-    color: #999;
-  }
-  
-  .message-form {
-    display: flex;
-    padding: 10px;
-    background-color: #f5f5f5;
-    border-top: 1px solid #ddd;
-  }
-  
-  .message-form input {
-    flex-grow: 1;
-    padding: 10px;
-    border-radius: 20px;
-    border: 1px solid #ccc;
-    margin-right: 10px;
-  }
-  
-  .message-form button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-  }
-  
-  .message-form button:hover {
-    background-color: #45a049;
-  }
-  
+}
