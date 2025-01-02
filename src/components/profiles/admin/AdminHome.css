@@ -9,7 +9,7 @@
 
 /* Sidebar */
 .adminHome-sidebar {
-    width: 400px; /* Increased width for better visibility */
+    width: 300px; /* Increased width for better visibility */
     background-color: black;
     color: white;
     display: flex;
@@ -19,7 +19,7 @@
 }
 
 .adminHome-logo {
-    width: 350px; /* Increased logo size */
+    width: 200px; /* Increased logo size */
     margin-bottom: 30px;
     align-self: center;
 }
@@ -36,7 +36,7 @@
     cursor: pointer;
     color: #cfd2dc;
     text-align: left;
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 500;
     transition: background-color 0.3s, color 0.3s;
     display: flex
@@ -71,7 +71,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 30px; /* Increased padding for a spacious look */
+    padding: 2px 58px;/* Increased padding for a spacious look */
     background-color: white;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }

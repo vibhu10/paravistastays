@@ -45,7 +45,7 @@ export default function Dashboard() {
     const [currentPage, setCurrentPage] = useState(1);
     const [menuVisible, setMenuVisible] = useState(null); // For action menu visibility
     const [filter, setFilter] = useState("Guest"); // Default filter
-    const entriesPerPage = 8;
+    const entriesPerPage = 6;
 
     const totalPages = Math.ceil(users.filter(user => user.type === filter).length / entriesPerPage);
 
