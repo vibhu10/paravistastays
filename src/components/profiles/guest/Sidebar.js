@@ -82,7 +82,7 @@ const Sidebar = ({ activeComponent, setActiveComponent, userData }) => {
       </div>
 
       <div className="sidebar-profilePage-div2">
-        <ul className="menu">
+        <ul className="sidebar-menu">
           <li
             className={`menu-item ${activeComponent === 'UserInfo' ? 'active' : ''}`}
             onClick={() => setActiveComponent('UserInfo')}

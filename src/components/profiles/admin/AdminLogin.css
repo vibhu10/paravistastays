@@ -139,4 +139,39 @@
       font-size: 0.85rem;
     }
   }
-  
+
+
+.hamburger-menu {
+    position: relative;
+    cursor: pointer;
+}
+
+.hamburger-icon {
+    font-size: 24px;
+}
+
+.menu {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    display: none;
+    flex-direction: column;
+}
+
+.hamburger-menu:hover .menu {
+    display: flex;
+}
+
+.logout-button {
+    padding: 8px 16px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.logout-button:hover {
+    background-color: #d32f2f;
+}

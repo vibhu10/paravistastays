@@ -25,7 +25,7 @@ function App() {
           <Route path="/influencer/inbox" element={<Inbox />} />
           <Route path="/hostlogin" element={<HostProfile />} />
           <Route path="/admin" element={<AdminLogin />} />
-          <Route path="/super-admin" element={<AdminHome />} />
+          <Route path="/super-admin-dashboard" element={<AdminHome />} />
           <Route path="/property" element={<DisplayProperty />} />
           <Route path="/host-watching-influencer" element={<HostWatchingInfluencer />} />
         </Routes>
