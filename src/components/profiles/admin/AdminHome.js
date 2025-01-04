@@ -5,16 +5,23 @@ import "./AdminHome.css";
 import Dashboard from "./Dashboard/Dashboard";
 import GuestList from "./Guest/GuestList";
 import BookingList from "./Guest/BookingList";
-import Host from "./Host/Host";
+import HostList from "./Host/HostList";
 import Influencer from "./Influencer/Influencer";
 import AdminHeader from "./AdminHeader";
 import AdminSidebar from "./AdminSidebar";
-import Loading from '../../Loading'
+import AllUsers from "./Users/AllUsers";
+import AddUsers from "./Users/AddUsers";
+import Profile from "./Users/Profile";
+import Loading from "../../Loading";
+import BookingListHost from "./Host/BookingListHost";
+import PaymentAndfinance from "./Payments/PaymentAndFinance";
 export default function AdminHome() {
     const [activeSection, setActiveSection] = useState("Dashboard");
     const [guestMenuOpen, setGuestMenuOpen] = useState(false);
+    const [userMenuOpen, setUserMenuOpen] = useState(false);
+    const [hostMenuOpen, setHostMenuOpen] = useState(false);
     const [userType, setUserType] = useState(null);
-   console.log(userType)
+
     useEffect(() => {
         // Get user type from localStorage
         const storedUserType = localStorage.getItem("userType");
@@ -33,34 +40,49 @@ export default function AdminHome() {
                 ) : (
                     <div>Access Denied</div>
                 );
-            case "Host":
-                return userType === "superadmin" ? <Host /> : <div>Access Denied</div>;
+            case "HostList":
+                return userType === "superadmin" ? <HostList/> : <div>Access Denied</div>;
+                case "BookingListHost":
+                    return userType === "superadmin" ? <BookingListHost/> : <div>Access Denied</div>;
             case "Influencer":
-                return userType === "superadmin" ? <Influencer /> : <div>Access Denied</div>;
+                return userType === "superadmin" || userType === "Author" ? (
+                    <Influencer />
+                ) : (
+                    <div>Access Denied</div>
+                );
+            case "AllUsers":
+                return userType === "superadmin" ? <AllUsers /> : <div>Access Denied</div>;
+            case "AddUsers":
+                return userType === "superadmin" ? <AddUsers /> : <div>Access Denied</div>;
+            case "Profile":
+                return <Profile />;
+
+                case "PaymentAndFinance":
+                    return <PaymentAndfinance/>;
+               
             default:
                 return <Dashboard />;
         }
     };
 
     if (!userType) {
-        return <Loading/>; // Show a loading state until userType is determined
+        return <Loading />; // Show a loading state until userType is determined
     }
 
     return (
         <div className="adminHome-container">
-            {/* Sidebar */}
             <AdminSidebar
                 activeSection={activeSection}
                 setActiveSection={setActiveSection}
                 guestMenuOpen={guestMenuOpen}
                 setGuestMenuOpen={setGuestMenuOpen}
+                userMenuOpen={userMenuOpen}
+                setUserMenuOpen={setUserMenuOpen}
+                hostMenuOpen={hostMenuOpen}
+                setHostMenuOpen={setHostMenuOpen}
             />
-            {/* Main Content */}
             <div className="adminHome-content">
-                {/* Header */}
                 <AdminHeader />
-
-                {/* Dynamic Content */}
                 <main>{renderContent()}</main>
             </div>
         </div>

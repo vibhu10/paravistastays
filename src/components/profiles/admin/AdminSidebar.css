@@ -1,0 +1,128 @@
+/* Sidebar Container */
+.adminHome-sidebar {
+    width: 300px;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+/* Sidebar Logo */
+.adminHome-logo {
+    width: 200px;
+    margin-bottom: 30px;
+    align-self: center;
+    border-radius: 8px;
+}
+
+/* Main Menu Styling */
+.adminHome-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.adminHome-menu li {
+    padding: 12px 20px;
+    margin: 10px 0;
+    cursor: pointer;
+    color: #cfd2dc; /* Default color for inactive items */
+    text-align: left;
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+    transition: color 0.3s ease, font-weight 0.3s ease;
+}
+
+/* Active and Hover States */
+.adminHome-menu li.active,
+.adminHome-menu li:hover {
+    color: #198e78; /* Highlight for active or hovered items */
+    font-weight: bold; /* Bold text for active or hovered items */
+}
+
+/* Submenu Container */
+.adminHome-submenu {
+    list-style: none;
+    padding-left: 30px; /* Indent submenu items */
+    margin: 0;
+    position: relative;
+}
+
+/* Submenu Items Styling */
+.submenu-item {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: darkgray; /* Default text color for inactive submenu items */
+    font-weight: normal;
+    padding: 8px 0;
+    position: relative;
+    transition: color 0.3s ease, font-weight 0.3s ease;
+}
+
+/* Dot for Submenu Items */
+.submenu-item .submenu-item-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: darkgray; /* Default color for the dot */
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+}
+
+/* Active Submenu Items */
+.submenu-item.active {
+    color: green; /* Text color for active items */
+    font-weight: bold; /* Bold text for active items */
+}
+
+.submenu-item.active .submenu-item-dot {
+    background-color: green; /* Green dot for active items */
+}
+
+/* Hover Effect for Submenu Items */
+.submenu-item:hover {
+    color: #198e78; /* Hover text color */
+}
+
+.submenu-item:hover .submenu-item-dot {
+    background-color: #198e78; /* Hover dot color */
+}
+
+/* Vertical Dotted Line Between Submenu Items */
+.submenu-item::before {
+    content: '';
+    position: absolute;
+    left: 15px; /* Align the vertical line with the dots */
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: darkgray; /* Line color */
+    border-style: dotted;
+    z-index: -1;
+}
+
+/* Adjust Line for First and Last Items */
+.submenu-item:first-child::before {
+    top: 50%; /* Start the line from the center for the first item */
+}
+
+.submenu-item:last-child::before {
+    bottom: 50%; /* End the line at the center for the last item */
+}
+
+/* Responsive Hover States */
+.submenu-item:hover {
+    color: #198e78;
+}
+
+.submenu-item:hover .submenu-item-dot {
+    background-color: #198e78;
+}

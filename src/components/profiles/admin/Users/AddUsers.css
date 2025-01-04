@@ -1,0 +1,79 @@
+
+  
+  .AddUser-form-container {
+    margin-left: 80px;
+    padding: 2rem;
+    border-radius: 8px;
+   
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  .AddUser-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+  
+  .AddUser-description {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    color: #666;
+  }
+  
+  .AddUser-label {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+    color: #333;
+    display: block;
+  }
+  
+  .AddUser-input {
+    width: 100%;
+    padding: 0.7rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9rem;
+  }
+  
+  .AddUser-name-fields {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .AddUser-name-fields div {
+    flex: 1;
+  }
+  
+  .AddUser-notification {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .AddUser-checkbox {
+    margin: 0;
+  }
+  
+  .AddUser-checkbox-label {
+    font-size: 0.9rem;
+  }
+  
+  .AddUser-button {
+    width: 100%;
+    background: #198E78;
+    color: #fff;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .AddUser-button:hover {
+    background-color: #218838;
+  }
+  

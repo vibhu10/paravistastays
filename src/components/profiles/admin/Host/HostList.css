@@ -1,0 +1,191 @@
+/* General container styles */
+.hostlist-container {
+    padding: 24px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Header styling */
+.hostlist-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.hostlist-tabs {
+    display: flex;
+    gap: 8px;
+}
+
+.hostlist-tab {
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 10px 30px;
+    font-size: 17px;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.hostlist-tab.active,
+.hostlist-tab:hover {
+    background-color: #198E78;
+    color: #fff;
+    border-color: #00bfa6;
+}
+
+/* Search input */
+.hostlist-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.hostlist-search {
+    padding: 8px 14px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.hostlist-search:focus {
+    border-color: #00bfa6;
+}
+
+/* Table styling */
+.hostlist-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.hostlist-table th,
+.hostlist-table td {
+    padding: 5px 16px;
+    text-align: left;
+    border-bottom: 1px solid #eaeaea;
+    font-size: 16px; /* Adjusted for readability */
+}
+
+.hostlist-table th {
+    background-color: #f9f9f9;
+    color: #444;
+}
+
+.hostlist-guest {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.hostlist-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+
+/* Status badges */
+.hostlist-status {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-weight: bold;
+    display: inline-block;
+    text-align: center;
+    font-size: 16px; /* Adjusted font size for better readability */
+    min-width: 70px; /* Ensures status has enough space */
+    white-space: nowrap; /* Prevent text from wrapping */
+}
+
+/* Status colors for different states */
+.hostlist-status.booked {
+    background-color: #e6f9f0;
+    color: #00bfa6;
+}
+
+.hostlist-status.canceled {
+    background-color: #fbeaea;
+    color: #d93025;
+}
+
+.hostlist-status.refund {
+    background-color: #fff4e5;
+    color: #f57c00;
+}
+
+/* Action dots and dropdown */
+.hostlist-action-menu {
+    position: relative;
+}
+
+.hostlist-action-menu.dots {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    min-width: 120px;
+}
+
+.hostlist-dots-menu:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: white;
+    border: none;
+    text-align: left;
+    color: #555;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-content button:hover {
+    background-color: #f0f0f0;
+}
+
+/* Pagination */
+.hostlist-pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+    gap: 8px;
+}
+
+.hostlist-page-btn {
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    border-radius: 6px;
+    background-color: #fff;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.hostlist-page-btn.active,
+.hostlist-page-btn:hover {
+    background-color: #00bfa6;
+    color: #fff;
+    border-color: #00bfa6;
+}
