@@ -107,17 +107,17 @@
 
 /* Status colors for different states */
 .guestlist-status.booked {
-    background-color: #e6f9f0;
+   
     color: #00bfa6;
 }
 
 .guestlist-status.canceled {
-    background-color: #fbeaea;
+
     color: #d93025;
 }
 
 .guestlist-status.refund {
-    background-color: #fff4e5;
+ 
     color: #f57c00;
 }
 

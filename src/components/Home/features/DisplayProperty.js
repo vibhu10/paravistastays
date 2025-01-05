@@ -52,7 +52,8 @@ const propertyData = {
   ],
 };
 
-const DisplayProperty = () => {
+const DisplayProperty = ({property}) => {
+  console.log(property,"ssss")
   const [showAllImages, setShowAllImages] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 

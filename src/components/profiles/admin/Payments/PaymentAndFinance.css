@@ -1,0 +1,168 @@
+/* General Container Styling */
+.PaymentAndFinance-container {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .PaymentAndFinance-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  /* Tabs Styling */
+  .PaymentAndFinance-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .PaymentAndFinance-tab {
+    padding: 10px 15px;
+    background-color: #e5e5e5;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .PaymentAndFinance-tab.active {
+    background-color: #198e78;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .PaymentAndFinance-tab:hover {
+    background-color: #c0c0c0;
+  }
+  
+  /* Search and Filter Controls */
+  .PaymentAndFinance-controls {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .PaymentAndFinance-search {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .PaymentAndFinance-filterButton {
+    padding: 10px 20px;
+    background-color: #198e78;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .PaymentAndFinance-filterButton:hover {
+    background-color: #146854;
+  }
+  
+  /* Table Styling */
+  .PaymentAndFinance-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .PaymentAndFinance-table th,
+  .PaymentAndFinance-table td {
+    text-align: left;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .PaymentAndFinance-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .PaymentAndFinance-booked {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .PaymentAndFinance-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    object-fit: cover;
+  }
+  
+  .location-text {
+    color: #198e78;
+    font-weight: bold;
+  }
+  
+  .transition-id {
+    color: #198e78;
+    font-weight: bold;
+  }
+  
+  .status {
+    font-weight: bold;
+  }
+  
+  .status.pendingg {
+    color: #f0ad4e;
+  }
+  
+  .status.canceled {
+    color: #d9534f;
+  }
+  
+  .status.refund {
+    color: #5bc0de;
+  }
+  
+  .status.paid {
+    color: #198e78;
+  }
+  
+  /* Action Menu */
+  .actions {
+    position: relative;
+  }
+  
+  .action-dots {
+    border: none;
+    background: none;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  
+  /* Pagination */
+  .PaymentAndFinance-pagination {
+    display: flex
+;
+    align-items: center;
+    justify-content: center;
+}
+  .PaymentAndFinance-pagination button {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .PaymentAndFinance-pagination button:hover {
+    background-color: #f2f2f2;
+  }
+  
+  .PaymentAndFinance-pagination button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  

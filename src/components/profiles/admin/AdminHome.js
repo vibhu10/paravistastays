@@ -15,6 +15,7 @@ import Profile from "./Users/Profile";
 import Loading from "../../Loading";
 import BookingListHost from "./Host/BookingListHost";
 import PaymentAndfinance from "./Payments/PaymentAndFinance";
+import CustomerSupport from "./CustomerSupport/CustromerSupport";
 export default function AdminHome() {
     const [activeSection, setActiveSection] = useState("Dashboard");
     const [guestMenuOpen, setGuestMenuOpen] = useState(false);
@@ -59,7 +60,8 @@ export default function AdminHome() {
 
                 case "PaymentAndFinance":
                     return <PaymentAndfinance/>;
-               
+                    case "Support":
+                        return <CustomerSupport/>;
             default:
                 return <Dashboard />;
         }

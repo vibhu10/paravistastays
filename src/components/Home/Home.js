@@ -29,6 +29,8 @@ import Loading from "../Loading";
 import HamburgerFilter from "./features/HamburgerFilter";
 import SearchBar from "./features/SearchBar";
 import DisplayProperty from "./features/DisplayProperty";
+import FilterHome from "./filterhome";
+import SignUpForm from "./SignUpForm";
 
 const filters = [
   { icon: faGem, label: "Luxury" },
@@ -50,7 +52,7 @@ const filters = [
 ];
 
 export default function Home() {
-  const[hamburgerPopUp,setHanburgerPopUp]=useState(false)
+  const [hamburgerPopUp, setHanburgerPopUp] = useState(false);
   const [popup, setPopup] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -67,11 +69,11 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [propertyData, setPropertyData] = useState(null);
 
-  
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const itemsPerRow = 6;
   const itemWidth = 100;
-  const maxScroll = (Math.ceil(filters.length / itemsPerRow) - 1) * (itemsPerRow * itemWidth);
+  const maxScroll =
+    (Math.ceil(filters.length / itemsPerRow) - 1) * (itemsPerRow * itemWidth);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -86,7 +88,6 @@ export default function Home() {
       setLoading(true);
       try {
         const response = await axios.get(
-     
           "https://mhmk2b29-3000.inc1.devtunnels.ms/api/property/allproperties"
         );
         setPropertyData(response.data);
@@ -101,7 +102,9 @@ export default function Home() {
   }, []);
 
   const handleScroll = () => {
-    setScrollOffset((prev) => Math.min(prev + itemsPerRow * itemWidth, maxScroll));
+    setScrollOffset((prev) =>
+      Math.min(prev + itemsPerRow * itemWidth, maxScroll)
+    );
   };
 
   const handleScrollLeft = () => {
@@ -109,7 +112,6 @@ export default function Home() {
   };
 
   const selectedProperty = (property) => {
-   
     navigate("/property", { state: { property } });
   };
 
@@ -255,8 +257,6 @@ export default function Home() {
     }
   };
 
-
-
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -265,62 +265,63 @@ export default function Home() {
     setIsMenuOpen(false);
   };
   const fetchFilteredProperties = async (filterData) => {
-    console.log(filterData,"click")
+    console.log(filterData, "click");
     try {
       const response = await axios.post(
-        'https://mhmk2b29-3000.inc1.devtunnels.ms/api/property/advancedfilter',  // Your API endpoint
-        filterData,  // Send the filter data as JSON in the request body
+        "https://mhmk2b29-3000.inc1.devtunnels.ms/api/property/advancedfilter", // Your API endpoint
+        filterData, // Send the filter data as JSON in the request body
         {
           headers: {
-            'Content-Type': 'application/json',  // Ensures that the body is JSON
+            "Content-Type": "application/json", // Ensures that the body is JSON
           },
         }
       );
-      console.log('Filtered properties:', response.data);
+      console.log("Filtered properties:", response.data);
     } catch (error) {
-      console.error('Error fetching properties:', error);
+      console.error("Error fetching properties:", error);
     }
   };
-  
-
-
 
   return (
     <div className="home-container">
-      {/* Header */}{loading && <Loading/>}
+      {/* Header */}
+      {loading && <Loading />}
       <div className="header">
         <div className="home-filter">
-     
-      <img  src="/paradise.jpeg" />
+          <img src="/paradise.jpeg" />
           {/* <div className="filter"></div> */}
-        <SearchBar/>
+          <SearchBar />
           <div>
-      {/* Filter Hamburger Button */}
-      <button className="filter-hamburger" onClick={toggleMenu}>
-        <div className="line"></div>
-        <div className="line short"></div>
-        <div className="line"></div>
-        Filter
-      </button>
-
-      {/* Modal for Hamburger Filter */}
-      {isMenuOpen && (
-        <div className="modal-overlay" onClick={closeMenu}>
-         
-          <div className="modal-container-Hamburger-Filter" onClick={(e) => e.stopPropagation()}>
-            <button className="close-button" onClick={closeMenu}>
-              &times;
+            {/* Filter Hamburger Button */}
+            <button className="filter-hamburger" onClick={toggleMenu}>
+              <div className="line"></div>
+              <div className="line short"></div>
+              <div className="line"></div>
+              Filter
             </button>
-          <HamburgerFilter  filterdata ={fetchFilteredProperties} /> {/* Render the HamburgerFilter component */}
+
+            {/* Modal for Hamburger Filter */}
+            {isMenuOpen && (
+              <div className="modal-overlay" onClick={closeMenu}>
+                <div
+                  className="modal-container-Hamburger-Filter"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <button className="close-button" onClick={closeMenu}>
+                    &times;
+                  </button>
+                  <HamburgerFilter filterdata={fetchFilteredProperties} />{" "}
+                  {/* Render the HamburgerFilter component */}
+                </div>
+              </div>
+            )}
           </div>
-        </div>
-      )}
-    </div>
-
-
 
           <div className="log-in-container">
-            <button className="switch-to-hosting-button" onClick={handleSwitchToHosting}>
+            <button
+              className="switch-to-hosting-button"
+              onClick={handleSwitchToHosting}
+            >
               Switch to hosting
             </button>
 
@@ -407,93 +408,61 @@ export default function Home() {
         </div>
 
         {/* Filter Buttons */}
-        <div className="container-filter-buttons">
-  <button className="compare-button">3/3 | Compare</button>
-  <button className="scroll-button" onClick={handleScrollLeft}>
-    <FontAwesomeIcon icon={faArrowLeft} />
-  </button>
-  <div className="filter-wrapper">
-    <div
-      className="filter-row"
-      style={{
-        transform: `translateX(-${scrollOffset}px)`,
-        transition: "transform 0.5s ease",
-      }}
-    >
-      {filters.map((filter, index) => (
-        <div key={index} className="filter-item">
-          <button
-            className="btn btn-outline-primary d-flex flex-column align-items-center"
-            onClick={() => handleFilterClick(filter)}
-            onMouseEnter={(e) => {
-              const icon = e.currentTarget.querySelector("svg");
-              if (icon) icon.style.transform = "scale(1.2)";
-            }}
-            onMouseLeave={(e) => {
-              const icon = e.currentTarget.querySelector("svg");
-              if (icon) icon.style.transform = "scale(1)";
-            }}
-            style={{
-              backgroundColor: "transparent",
-              border: "none",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              transition: "transform 0.3s ease",
-            }}
-          >
-            <FontAwesomeIcon
-              icon={filter.icon}
-              size="2x"
-              style={{
-                color: "gray",
-                transition: "transform 0.3s ease, color 0.3s ease",
-              }}
-            />
-            <span
-              style={{
-                color: "gray",
-                transition: "color 0.3s ease",
-              }}
-            >
-              {filter.label}
-            </span>
-          </button>
-        </div>
-      ))}
-    </div>
-  </div>
-  <button className="scroll-button" onClick={handleScroll}>
-    <FontAwesomeIcon icon={faArrowRight} />
-  </button>
-</div>
-
+        <FilterHome
+          handleScrollLeft={handleScrollLeft}
+          handleScroll={handleScroll}
+          handleFilterClick={handleFilterClick}
+          scrollOffset={scrollOffset}
+          filters={filters}
+        />
       </div>
 
       <div className="home-body">
         <div className="hotel-data">
           {propertyData && propertyData.length > 0 ? (
             propertyData.map((property, index) => (
-              <div key={index} className="hotel-card" onClick={() => selectedProperty(property)}>
+              <div
+                key={index}
+                className="hotel-card"
+                onClick={() => selectedProperty(property)}
+              >
                 <img
-                  src={property.coverPhotos?.cover?.image || "https://via.placeholder.com/150"}
+                  src={
+                    property.coverPhotos?.cover?.image ||
+                    "https://via.placeholder.com/150"
+                  }
                   alt={`Image of ${property.title || "Unknown Property"}`}
                 />
                 <div id="hotel-detail">
-                  <h3 style={{ color: "#198E78" }}>{property.title || "Unnamed Property"}</h3>
+                  <h3 style={{ color: "#198E78" }}>
+                    {property.title || "Unnamed Property"}
+                  </h3>
                   <p>
-                    Check-in: {property.availability?.checkinTime ?
-                      new Date(property.availability.checkinTime).toLocaleTimeString([], {
-                        hour: "2-digit",
-                        minute: "2-digit",
-                      }) : "N/A"}
+                    Check-in:{" "}
+                    {property.availability?.checkinTime
+                      ? new Date(
+                          property.availability.checkinTime
+                        ).toLocaleTimeString([], {
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        })
+                      : "N/A"}
                   </p>
                   <p>
-                    Min Nights: {property.availability?.minimumNight || "N/A"} | Max Nights: {property.availability?.maximumNight || "N/A"}
+                    Min Nights: {property.availability?.minimumNight || "N/A"} |
+                    Max Nights: {property.availability?.maximumNight || "N/A"}
                   </p>
-                  <p style={{ color: "black", fontSize: "18px", fontWeight: "bold" }}>
-                    ${Math.floor(property.price?.BaseCharge || 0)}/night Total: <span style={{ color: "#198E78" }}>${Math.floor(property.price?.PriceBeforeTax || 0)}</span>
+                  <p
+                    style={{
+                      color: "black",
+                      fontSize: "18px",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    ${Math.floor(property.price?.BaseCharge || 0)}/night Total:{" "}
+                    <span style={{ color: "#198E78" }}>
+                      ${Math.floor(property.price?.PriceBeforeTax || 0)}
+                    </span>
                   </p>
                 </div>
               </div>
@@ -504,214 +473,164 @@ export default function Home() {
         </div>
       </div>
 
-
-
-
-
       {/* Signup Popup */}
       {signupPopup && (
-  <div>
-    <div className="signup-popup-overlay" onClick={() => setSignupPopup(false)}></div>
-    {signupStep === 1 ? (
-      <div className="signup-popup">
-        <button
-          className="close-popup-btn"
-          onClick={() => setSignupPopup(false)}
-        >
-          ✖
-        </button>
-        <h3 className="text-center mb-4">Sign up</h3>
-        <form>
-          <div className="mb-3">
-            <label htmlFor="email" className="form-label">Email</label>
-            <input
-              type="email"
-              className="form-control"
-              id="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+        <div>
+          <div
+            className="signup-popup-overlay"
+            onClick={() => setSignupPopup(false)}
+          ></div>
+          {signupStep === 1 ? (
+            <div className="signup-popup">
+              <button
+                className="close-popup-btn"
+                onClick={() => setSignupPopup(false)}
+              >
+                ✖
+              </button>
+              <h3 className="text-center mb-4">Sign up</h3>
+              <form>
+                <div className="mb-3">
+                  <label htmlFor="email" className="form-label">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    className="form-control"
+                    id="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  {error && (
+                    <small
+                      style={{
+                        color: "red",
+                        display: "block",
+                        marginTop: "5px",
+                      }}
+                    >
+                      {error}
+                    </small>
+                  )}
+                </div>
+                <button
+                  onClick={handleSignUp}
+                  type="submit"
+                  className="btn btn-primary w-100 mb-3"
+                  style={{ background: "#198E78", border: "none" }}
+                >
+                  Continue
+                </button>
+              </form>
+
+              <div className="d-flex align-items-center my-3">
+                <hr className="flex-grow-1" />
+                <span className="mx-2 text-muted">or</span>
+                <hr className="flex-grow-1" />
+              </div>
+              <div className="d-grid gap-3">
+                <button
+                  className="btn btn-outline-primary d-flex align-items-center justify-content-center"
+                  style={{
+                    padding: "0.5rem 1rem",
+                    fontSize: "0.875rem",
+                    lineHeight: "1.2",
+                    borderWidth: "1px",
+                    borderRadius: "0.25rem",
+                    backgroundColor: "transparent",
+                    textDecoration: "none",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.textDecoration = "underline"; // Add underline
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.textDecoration = "none"; // Remove underline
+                  }}
+                >
+                  <i
+                    className="bi bi-facebook me-2"
+                    style={{
+                      fontSize: "1rem",
+                    }}
+                  ></i>{" "}
+                  Continue with Facebook
+                </button>
+
+                <button
+                  className="btn btn-outline-danger d-flex align-items-center justify-content-center"
+                  style={{
+                    padding: "0.5rem 1rem",
+                    fontSize: "0.875rem",
+                    lineHeight: "1.2",
+                    borderWidth: "1px",
+                    borderRadius: "0.25rem",
+                    backgroundColor: "transparent",
+                    textDecoration: "none",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.textDecoration = "underline"; // Add underline
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.textDecoration = "none"; // Remove underline
+                  }}
+                >
+                  <i
+                    className="bi bi-google me-2"
+                    style={{
+                      fontSize: "1rem",
+                    }}
+                  ></i>{" "}
+                  Continue with Google
+                </button>
+
+                <button
+                  className="btn btn-outline-dark d-flex align-items-center justify-content-center"
+                  style={{
+                    padding: "0.5rem 1rem",
+                    fontSize: "0.875rem",
+                    lineHeight: "1.2",
+                    borderWidth: "1px",
+                    borderRadius: "0.25rem",
+                    backgroundColor: "transparent",
+                    textDecoration: "none",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.textDecoration = "underline"; // Add underline
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.textDecoration = "none"; // Remove underline
+                  }}
+                >
+                  <i
+                    className="bi bi-apple me-2"
+                    style={{
+                      fontSize: "1rem",
+                    }}
+                  ></i>{" "}
+                  Continue with Apple
+                </button>
+              </div>
+            </div>
+          ) : (
+            <SignUpForm
+              setFirstName={setFirstName}
+              setLastName={setLastName}
+              setDob={setDob}
+              setPassword={setPassword}
+              handleCompleteSignUp={handleCompleteSignUp}
+              firstName={firstName}
+              lastName={lastName}
+              dob={dob}
+              password={password}
+              error={error}
+              email={email}
             />
-            {error && (
-              <small style={{ color: "red", display: "block", marginTop: "5px" }}>{error}</small>
-            )}
-          </div>
-          <button
-            onClick={handleSignUp}
-            type="submit"
-            className="btn btn-primary w-100 mb-3"
-            style={{ background: "#198E78", border: "none" }}
-          >
-            Continue
-          </button>
-        </form>
-
-        <div className="d-flex align-items-center my-3">
-          <hr className="flex-grow-1" />
-          <span className="mx-2 text-muted">or</span>
-          <hr className="flex-grow-1" />
+          )}
         </div>
-        <div className="d-grid gap-3">
-        <button
-  className="btn btn-outline-primary d-flex align-items-center justify-content-center"
-  style={{
-    padding: "0.5rem 1rem",
-    fontSize: "0.875rem",
-    lineHeight: "1.2",
-    borderWidth: "1px",
-    borderRadius: "0.25rem",
-    backgroundColor: "transparent",
-    textDecoration: "none",
-  }}
-  onMouseEnter={(e) => {
-    e.target.style.textDecoration = "underline"; // Add underline
-  }}
-  onMouseLeave={(e) => {
-    e.target.style.textDecoration = "none"; // Remove underline
-  }}
->
-  <i
-    className="bi bi-facebook me-2"
-    style={{
-      fontSize: "1rem",
-    }}
-  ></i>{" "}
-  Continue with Facebook
-</button>
-
-<button
-  className="btn btn-outline-danger d-flex align-items-center justify-content-center"
-  style={{
-    padding: "0.5rem 1rem",
-    fontSize: "0.875rem",
-    lineHeight: "1.2",
-    borderWidth: "1px",
-    borderRadius: "0.25rem",
-    backgroundColor: "transparent",
-    textDecoration: "none",
-  }}
-  onMouseEnter={(e) => {
-    e.target.style.textDecoration = "underline"; // Add underline
-  }}
-  onMouseLeave={(e) => {
-    e.target.style.textDecoration = "none"; // Remove underline
-  }}
->
-  <i
-    className="bi bi-google me-2"
-    style={{
-      fontSize: "1rem",
-    }}
-  ></i>{" "}
-  Continue with Google
-</button>
-
-<button
-  className="btn btn-outline-dark d-flex align-items-center justify-content-center"
-  style={{
-    padding: "0.5rem 1rem",
-    fontSize: "0.875rem",
-    lineHeight: "1.2",
-    borderWidth: "1px",
-    borderRadius: "0.25rem",
-    backgroundColor: "transparent",
-    textDecoration: "none",
-  }}
-  onMouseEnter={(e) => {
-    e.target.style.textDecoration = "underline"; // Add underline
-  }}
-  onMouseLeave={(e) => {
-    e.target.style.textDecoration = "none"; // Remove underline
-  }}
->
-  <i
-    className="bi bi-apple me-2"
-    style={{
-      fontSize: "1rem",
-    }}
-  ></i>{" "}
-  Continue with Apple
-</button>
-
-        </div>
-      </div>
-    ) : (
-      <div className="signup2-container">
-        <h2>Finish Signing Up</h2>
-        <div className="signup2-input-group">
-          <label htmlFor="first-name">First Name</label>
-          <input
-            type="text"
-            id="first-name"
-            placeholder="First Name"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-          />
-        </div>
-        <div className="signup2-input-group">
-          <label htmlFor="last-name">Last Name</label>
-          <input
-            type="text"
-            id="last-name"
-            placeholder="Last Name"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-          />
-        </div>
-        <div className="signup2-input-group">
-          <label htmlFor="dob">Date of Birth</label>
-          <input
-            type="date"
-            id="dob"
-            value={dob}
-            onChange={(e) => setDob(e.target.value)}
-          />
-        </div>
-           <div className="signup2-input-group">
-          <label htmlFor="Email">Email</label>
-          <input
-            type="email"
-            id="email"
-            value={email} 
-            disabled
-           
-          />
-        </div>
-        <div className="signup2-input-group">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <p className="signup2-agree">
-          By selecting Agree and Continue, I agree to the Terms of Service, 
-          Payments Terms of Service, and Nondiscrimination Policy, and acknowledge the Privacy Policy.
-        </p>
-        <div className="signup2-checkbox-group">
-          <input type="checkbox" id="marketing" />
-          <label htmlFor="marketing">I don't want to receive marketing messages from paradise.</label>
-        </div>
-        <button
-          onClick={handleCompleteSignUp}
-          className="btn btn-primary w-100"
-          style={{ background: "#198E78", border: "none" }}
-        >
-          Agree and Continue
-        </button>
-        {error && <p style={{ color: "red", marginTop: "10px" }}>{error}</p>}
-      </div>
-    )}
-  </div>
-)}
-
-
+      )}
 
       {/* Footer */}
-
     </div>
   );
 }
