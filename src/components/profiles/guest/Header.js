@@ -20,16 +20,11 @@ const Header = () => {
 
   return (
     <header className="header-container">
-      {/* Logo Section */}
+    
       <div className="logo-section">
       <img 
   src="/paradisenewlogo.png" 
-  alt="Logo" 
-  style={{
-    width: "200px", // Adjust the width as needed
-    height: "60px", // Maintain aspect ratio
-    display: "block", // Ensure proper alignment
-  }} 
+  alt="Logo"  
 />
 
       </div>

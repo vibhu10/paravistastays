@@ -30,7 +30,7 @@ export default function Header({
   return (
     <div className="header">
       <div className="home-filter">
-        <img src="/paradisenewlogo.png" />
+        <img src="/paradisenewlogo.png" alt="paradise"/>
         {/* <div className="filter"></div> */}
         <SearchBar />
         <div>

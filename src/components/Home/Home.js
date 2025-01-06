@@ -291,7 +291,7 @@ export default function Home() {
     <div className="home-container">
       {/* Header */}
       {loading && <Loading />}
-     <Header 
+     <Header
       toggleMenu={toggleMenu}
       isMenuOpen={isMenuOpen}
       closeMenu={closeMenu}
