@@ -1,10 +1,12 @@
 import "./Home.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import './features/DisplayProperty/DisplayProperty'
 import { useState, useEffect } from "react";
+import Header from "./Header";
 import axios from "axios";
+
 import { useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGem,
   faPalette,
@@ -22,15 +24,15 @@ import {
   faHeart,
   faWallet,
   faCalendar,
-  faArrowLeft,
-  faArrowRight,
+ 
 } from "@fortawesome/free-solid-svg-icons";
 import Loading from "../Loading";
-import HamburgerFilter from "./features/HamburgerFilter";
-import SearchBar from "./features/SearchBar";
-import DisplayProperty from "./features/DisplayProperty";
-import FilterHome from "./filterhome";
+
 import SignUpForm from "./SignUpForm";
+import SignUpOne from "./SignUpOne";
+import PropertyCard from "./PropertyCard";
+import DisplayProperty from "./features/DisplayProperty/DisplayProperty";
+import FilterHome from "./filterhome";
 
 const filters = [
   { icon: faGem, label: "Luxury" },
@@ -52,7 +54,7 @@ const filters = [
 ];
 
 export default function Home() {
-  const [hamburgerPopUp, setHanburgerPopUp] = useState(false);
+ 
   const [popup, setPopup] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -68,7 +70,8 @@ export default function Home() {
   const [scrollOffset, setScrollOffset] = useState(0);
   const [loading, setLoading] = useState(false);
   const [propertyData, setPropertyData] = useState(null);
-
+  const [isPropertySelected, setIsPropertySelected] = useState(false);
+  const[selectedPropertyData,setSelectedPropertyData]=useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const itemsPerRow = 6;
   const itemWidth = 100;
@@ -112,7 +115,9 @@ export default function Home() {
   };
 
   const selectedProperty = (property) => {
-    navigate("/property", { state: { property } });
+    setIsPropertySelected(true);
+   setSelectedPropertyData(property);
+   
   };
 
   const checkEmailExistence = async () => {
@@ -286,191 +291,58 @@ export default function Home() {
     <div className="home-container">
       {/* Header */}
       {loading && <Loading />}
-      <div className="header">
-        <div className="home-filter">
-          <img src="/paradise.jpeg" />
-          {/* <div className="filter"></div> */}
-          <SearchBar />
-          <div>
-            {/* Filter Hamburger Button */}
-            <button className="filter-hamburger" onClick={toggleMenu}>
-              <div className="line"></div>
-              <div className="line short"></div>
-              <div className="line"></div>
-              Filter
-            </button>
+     <Header 
+      toggleMenu={toggleMenu}
+      isMenuOpen={isMenuOpen}
+      closeMenu={closeMenu}
+      fetchFilteredProperties={fetchFilteredProperties}
 
-            {/* Modal for Hamburger Filter */}
-            {isMenuOpen && (
-              <div className="modal-overlay" onClick={closeMenu}>
-                <div
-                  className="modal-container-Hamburger-Filter"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <button className="close-button" onClick={closeMenu}>
-                    &times;
-                  </button>
-                  <HamburgerFilter filterdata={fetchFilteredProperties} />{" "}
-                  {/* Render the HamburgerFilter component */}
-                </div>
-              </div>
-            )}
-          </div>
+      setPopup={setPopup}
 
-          <div className="log-in-container">
-            <button
-              className="switch-to-hosting-button"
-              onClick={handleSwitchToHosting}
-            >
-              Switch to hosting
-            </button>
-
-            {isAuthenticated ? (
-              <div className="profile-menu">
-                <div
-                  className="profile-icon"
-                  onClick={toggleDropdown}
-                  style={{ cursor: "pointer" }}
-                >
-                  <span>W</span>
-                </div>
-                {showDropdown && (
-                  <div className="profile-dropdown">
-                    <ul>
-                      <li onClick={handleProfileClick}>Profile</li>
-                      <li>Reservations</li>
-                      <li>Saved</li>
-                      <li>Inbox</li>
-                      <li>Compare</li>
-                      <li>List Your Property</li>
-                      <li>Referral Program</li>
-                      <li>Become an Influencer</li>
-                      <li>Help Center</li>
-                      <li>Resources</li>
-                      <li>Feedback</li>
-                      <li onClick={handleLogout}>Logout</li>
-                    </ul>
-                  </div>
-                )}
-              </div>
-            ) : (
-              <button
-                className="hamburger-button"
-                onClick={() => setPopup(!popup)}
-              >
-                <div className="line"></div>
-                <div className="line short"></div>
-                <div className="line"></div>
-              </button>
-            )}
-
-            {popup && !isAuthenticated && (
-              <div className="profile-dropdown">
-                <ul>
-                  <li onClick={toggleLoginPopup}>Login</li>
-                  <li onClick={toggleSignupPopup}>Sign Up</li>
-                </ul>
-              </div>
-            )}
-
-            {loginPopup && (
-              <div className="login-popup">
-                <button
-                  style={{ width: "20px", background: "none" }}
-                  className="close-popup-btn"
-                  onClick={() => setLoginPopup(false)}
-                >
-                  ✖
-                </button>
-                <h4>Login or Sign up</h4>
-                <h3>Welcome to paradise</h3>
-                <div id="log-in-phoneNo-div">
-                  <input
-                    type="email"
-                    id="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter Your Email"
-                  />
-                  <input
-                    type="password"
-                    id="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Enter Your Password"
-                  />
-                </div>
-                <button onClick={handleLogin}>Continue</button>
-                {error && <p style={{ color: "red" }}>{error}</p>}
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Filter Buttons */}
-        <FilterHome
-          handleScrollLeft={handleScrollLeft}
-          handleScroll={handleScroll}
-          handleFilterClick={handleFilterClick}
-          scrollOffset={scrollOffset}
-          filters={filters}
-        />
-      </div>
+      popup={popup}
+      isAuthenticated={isAuthenticated}
+      handleSwitchToHosting={handleSwitchToHosting}
+      showDropdown={showDropdown}
+      toggleDropdown={toggleDropdown}
+      handleProfileClick={handleProfileClick}
+      handleLogout={handleLogout}
+      loginPopup={loginPopup}
+      setLoginPopup={setLoginPopup}
+      email={email}
+      setEmail={setEmail}
+      password={password}
+      setPassword={setPassword}
+      handleLogin={handleLogin}
+      error={error}
+      scrollOffset={scrollOffset}
+      handleScroll={handleScroll}
+      handleScrollLeft={handleScrollLeft}
+      handleFilterClick={handleFilterClick}
+      filters={filters}
+      toggleLoginPopup={toggleLoginPopup}
+      toggleSignupPopup={toggleSignupPopup}
+      isPropertySelected={isPropertySelected}
+     />
+  {/* Filter Buttons */}
+  {!isPropertySelected ?  <FilterHome
+        handleScrollLeft={handleScrollLeft}
+        handleScroll={handleScroll}
+        handleFilterClick={handleFilterClick}
+        scrollOffset={scrollOffset}
+        filters={filters}
+      />
+    :null
+    }
+      {/* Main body*/}
 
       <div className="home-body">
-        <div className="hotel-data">
-          {propertyData && propertyData.length > 0 ? (
-            propertyData.map((property, index) => (
-              <div
-                key={index}
-                className="hotel-card"
-                onClick={() => selectedProperty(property)}
-              >
-                <img
-                  src={
-                    property.coverPhotos?.cover?.image ||
-                    "https://via.placeholder.com/150"
-                  }
-                  alt={`Image of ${property.title || "Unknown Property"}`}
-                />
-                <div id="hotel-detail">
-                  <h3 style={{ color: "#198E78" }}>
-                    {property.title || "Unnamed Property"}
-                  </h3>
-                  <p>
-                    Check-in:{" "}
-                    {property.availability?.checkinTime
-                      ? new Date(
-                          property.availability.checkinTime
-                        ).toLocaleTimeString([], {
-                          hour: "2-digit",
-                          minute: "2-digit",
-                        })
-                      : "N/A"}
-                  </p>
-                  <p>
-                    Min Nights: {property.availability?.minimumNight || "N/A"} |
-                    Max Nights: {property.availability?.maximumNight || "N/A"}
-                  </p>
-                  <p
-                    style={{
-                      color: "black",
-                      fontSize: "18px",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    ${Math.floor(property.price?.BaseCharge || 0)}/night Total:{" "}
-                    <span style={{ color: "#198E78" }}>
-                      ${Math.floor(property.price?.PriceBeforeTax || 0)}
-                    </span>
-                  </p>
-                </div>
-              </div>
-            ))
-          ) : (
-            <p>No properties available to display.</p>
-          )}
-        </div>
+
+        {!isPropertySelected ?
+       <PropertyCard
+       propertyData={propertyData} selectedProperty={selectedProperty}
+       />:<DisplayProperty selectedPropertyData={selectedPropertyData}/>
+      }
+
       </div>
 
       {/* Signup Popup */}
@@ -481,137 +353,7 @@ export default function Home() {
             onClick={() => setSignupPopup(false)}
           ></div>
           {signupStep === 1 ? (
-            <div className="signup-popup">
-              <button
-                className="close-popup-btn"
-                onClick={() => setSignupPopup(false)}
-              >
-                ✖
-              </button>
-              <h3 className="text-center mb-4">Sign up</h3>
-              <form>
-                <div className="mb-3">
-                  <label htmlFor="email" className="form-label">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    className="form-control"
-                    id="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                  {error && (
-                    <small
-                      style={{
-                        color: "red",
-                        display: "block",
-                        marginTop: "5px",
-                      }}
-                    >
-                      {error}
-                    </small>
-                  )}
-                </div>
-                <button
-                  onClick={handleSignUp}
-                  type="submit"
-                  className="btn btn-primary w-100 mb-3"
-                  style={{ background: "#198E78", border: "none" }}
-                >
-                  Continue
-                </button>
-              </form>
-
-              <div className="d-flex align-items-center my-3">
-                <hr className="flex-grow-1" />
-                <span className="mx-2 text-muted">or</span>
-                <hr className="flex-grow-1" />
-              </div>
-              <div className="d-grid gap-3">
-                <button
-                  className="btn btn-outline-primary d-flex align-items-center justify-content-center"
-                  style={{
-                    padding: "0.5rem 1rem",
-                    fontSize: "0.875rem",
-                    lineHeight: "1.2",
-                    borderWidth: "1px",
-                    borderRadius: "0.25rem",
-                    backgroundColor: "transparent",
-                    textDecoration: "none",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.target.style.textDecoration = "underline"; // Add underline
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.textDecoration = "none"; // Remove underline
-                  }}
-                >
-                  <i
-                    className="bi bi-facebook me-2"
-                    style={{
-                      fontSize: "1rem",
-                    }}
-                  ></i>{" "}
-                  Continue with Facebook
-                </button>
-
-                <button
-                  className="btn btn-outline-danger d-flex align-items-center justify-content-center"
-                  style={{
-                    padding: "0.5rem 1rem",
-                    fontSize: "0.875rem",
-                    lineHeight: "1.2",
-                    borderWidth: "1px",
-                    borderRadius: "0.25rem",
-                    backgroundColor: "transparent",
-                    textDecoration: "none",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.target.style.textDecoration = "underline"; // Add underline
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.textDecoration = "none"; // Remove underline
-                  }}
-                >
-                  <i
-                    className="bi bi-google me-2"
-                    style={{
-                      fontSize: "1rem",
-                    }}
-                  ></i>{" "}
-                  Continue with Google
-                </button>
-
-                <button
-                  className="btn btn-outline-dark d-flex align-items-center justify-content-center"
-                  style={{
-                    padding: "0.5rem 1rem",
-                    fontSize: "0.875rem",
-                    lineHeight: "1.2",
-                    borderWidth: "1px",
-                    borderRadius: "0.25rem",
-                    backgroundColor: "transparent",
-                    textDecoration: "none",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.target.style.textDecoration = "underline"; // Add underline
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.textDecoration = "none"; // Remove underline
-                  }}
-                >
-                  <i
-                    className="bi bi-apple me-2"
-                    style={{
-                      fontSize: "1rem",
-                    }}
-                  ></i>{" "}
-                  Continue with Apple
-                </button>
-              </div>
-            </div>
+           <SignUpOne setSignupPopup={setSignupPopup} email={email} setEmail={setEmail} error={error} handleSignUp={handleSignUp}/>
           ) : (
             <SignUpForm
               setFirstName={setFirstName}

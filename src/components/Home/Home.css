@@ -550,7 +550,6 @@
   .hotel-data {
     /* width: 100vw; */
     background-color: white;
-    height: 81vh;
     display: flex
 ;
     flex-wrap: wrap;
@@ -718,6 +717,7 @@
 
 /* General Header */
 .header {
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: space-between;

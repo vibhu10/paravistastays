@@ -1,0 +1,47 @@
+.PropertyDisplayHouseRule-container {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .PropertyDisplayHouseRule-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .PropertyDisplayHouseRule-subtitle {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  .PropertyDisplayHouseRule-rule {
+    margin-bottom: 15px;
+  }
+  
+  .PropertyDisplayHouseRule-ruleTitle {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .PropertyDisplayHouseRule-ruleText {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.5;
+  }
+  
+  .PropertyDisplayHouseRule-more {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .PropertyDisplayHouseRule-more:hover {
+    text-decoration: underline;
+  }
+  
