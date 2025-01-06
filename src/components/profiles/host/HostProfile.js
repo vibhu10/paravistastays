@@ -321,7 +321,7 @@ export default function HostProfile() {
       <header className="host-profile-header">
   <img
     className="host-profile-logo"
-    src="/paradise.jpeg"
+    src="/paradisenewlogo.png"
     alt="Paradise"
   />
   <nav className="host-profile-nav">

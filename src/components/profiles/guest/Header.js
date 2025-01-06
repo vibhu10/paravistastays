@@ -23,11 +23,11 @@ const Header = () => {
       {/* Logo Section */}
       <div className="logo-section">
       <img 
-  src="/paradise.jpeg" 
+  src="/paradisenewlogo.png" 
   alt="Logo" 
   style={{
-    width: "100px", // Adjust the width as needed
-    height: "auto", // Maintain aspect ratio
+    width: "200px", // Adjust the width as needed
+    height: "60px", // Maintain aspect ratio
     display: "block", // Ensure proper alignment
   }} 
 />

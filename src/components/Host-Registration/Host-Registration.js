@@ -80,7 +80,7 @@ async function savePropertyDataToServer() {
     return (
         <div>
       <header className="header-host">
-        <img src="/paradise.jpeg" alt="paradise" />
+        <img src="/paradisenewlogo.png" alt="paradise" />
         <button
       className='header-host button'
       onClick={() => navigate('/')} // Redirect to the home page

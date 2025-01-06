@@ -11,12 +11,10 @@
     justify-content: space-between;
 
 }
-.header-host img{
-    width: 240px;
-    height: 76px;
-    margin-left: 9px;
-    /* position: absolute;
-    left: 43px; */
+.header-host img {
+  width: 210px;
+  height: 70px;
+  margin-left: 100px;
 }
 .header-host button{
   margin: 15px;
