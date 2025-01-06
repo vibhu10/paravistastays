@@ -1,0 +1,119 @@
+.review-section-property-select-container {
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  .review-section-property-select-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .review-section-property-select-rating-summary {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .review-section-property-select-average-rating {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .review-section-property-select-stars {
+    color: #f4b400; /* Gold color */
+    font-size: 1.25rem;
+  }
+  
+  .review-section-property-select-review-count {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .review-section-property-select-reviews-list {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .review-section-property-select-review-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    width: calc(50% - 0.5rem);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .review-section-property-select-review-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .review-section-property-select-avatar {
+    width: 40px;
+    height: 40px;
+    background-color:  #048A69;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+  }
+  
+  .review-section-property-select-reviewer-name {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .review-section-property-select-review-date {
+    font-size: 0.875rem;
+    color: #888;
+  }
+  
+  .review-section-property-select-review-text {
+    font-size: 0.875rem;
+    color: #555;
+    margin: 0 0 0.5rem;
+  }
+  
+  .review-section-property-select-read-more {
+    font-size: 0.875rem;
+    color:  #048A69;
+    text-decoration: none;
+  }
+  
+  .review-section-property-select-read-more:hover {
+    text-decoration: underline;
+  }
+  
+  .review-section-property-select-show-all-btn {
+    margin-top: 1.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    color: black;
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 11px;
+    cursor: pointer;
+}
+  .review-section-property-select-show-all-btn:hover {
+    background-color: #048A69;
+  }
+  .review-section-property-select-reviews-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .review-section-property-select-review-card {
+    width: calc(50% - 0.5rem); /* Adjust width for responsive layout */
+  }
+  
+  

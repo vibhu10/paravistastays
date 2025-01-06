@@ -4,7 +4,10 @@ import "react-calendar/dist/Calendar.css";
 import "./SelectedPropertyCalendar.css";
 
 const SelectedPropertyCalendar = () => {
-  const [value, setValue] = useState([new Date(2024, 8, 9), new Date(2024, 8, 12)]); // Pre-selected range
+  const [value, setValue] = useState([
+    new Date(2024, 8, 9),
+    new Date(2024, 8, 12),
+  ]); // Pre-selected range
 
   return (
     <div className="selected-property-calendar-container">
@@ -23,8 +26,14 @@ const SelectedPropertyCalendar = () => {
             const normalizedStart = new Date(start.setHours(0, 0, 0, 0));
             const normalizedEnd = new Date(end.setHours(0, 0, 0, 0));
 
-            if (normalizedDate >= normalizedStart && normalizedDate <= normalizedEnd) {
-              if (normalizedDate.getTime() === normalizedStart.getTime() || normalizedDate.getTime() === normalizedEnd.getTime()) {
+            if (
+              normalizedDate >= normalizedStart &&
+              normalizedDate <= normalizedEnd
+            ) {
+              if (
+                normalizedDate.getTime() === normalizedStart.getTime() ||
+                normalizedDate.getTime() === normalizedEnd.getTime()
+              ) {
                 return "selected-start-end"; // Custom style for start or end date
               }
               return "selected-range"; // Custom style for the range

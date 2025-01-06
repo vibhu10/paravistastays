@@ -67,7 +67,7 @@ function DisplayProperty({ selectedPropertyData }) {
     </div>
      
       <PropertyImageGrid/>
-
+<hr/>
       {/* Property Details Section */}
       <div className="property-details-section">
         {/* Left: Property Description */}
@@ -77,7 +77,7 @@ function DisplayProperty({ selectedPropertyData }) {
        <PropertyReservation/>
       </div>
 
-      
+      <hr/>
  <PropertyAmenities/>
 
 <hr/>

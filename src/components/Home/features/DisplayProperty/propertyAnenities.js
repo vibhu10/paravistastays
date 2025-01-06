@@ -1,58 +1,61 @@
+import React, { useState } from "react";
+
+import './propertyAnenities.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faKitchenSet,
   faParking,
-  faBowlFood,
-  faTv,
-  faWifi,
-
-  faChild,
-  faTree,
-  faFridge,
   faWind,
   faFire,
+  faWifi,
+  faTv,
+  faTree,
+  faChild,
+  faSnowflake, // Substitute for fridge
+  faShower, // Example for additional amenities
+  faBed,
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function PropertyAmenities() {
+  const [showMore, setShowMore] = useState(false);
 
-    return(
-        <div className="property-amenities">
-        <h3>Amenities</h3>
-        <div className="amenities-grid">
-          <div>
-            <FontAwesomeIcon icon={faKitchenSet} /> Kitchen
+  const amenities = [
+    { icon: faKitchenSet, label: "Kitchen" },
+    { icon: faParking, label: "Free parking on premises" },
+    { icon: faWind, label: "Private patio or balcony" },
+    { icon: faFire, label: "Indoor fireplace" },
+    { icon: faSnowflake, label: "Hair dryer" }, // Updated icon
+    { icon: faWifi, label: "Wifi" },
+    { icon: faTv, label: "TV" },
+    { icon: faTree, label: "Garden" },
+    { icon: faChild, label: "Children's books and toys" },
+    { icon: faSnowflake, label: "Fridge" }, // Updated icon
+    // Additional amenities
+    { icon: faShower, label: "Shower" },
+    { icon: faBed, label: "Extra beds" },
+  ];
+
+  const visibleAmenities = showMore ? amenities : amenities.slice(0, 10);
+
+  return (
+    <div className="selected-property-amenites-home">
+      <h3 className="property-amenities-title">Amenities</h3>
+      <div className="property-amenities-grid">
+        {visibleAmenities.map((amenity, index) => (
+          <div className="property-amenities-item" key={index}>
+            <FontAwesomeIcon icon={amenity.icon} /> {amenity.label}
           </div>
-          <div>
-            <FontAwesomeIcon icon={faParking} /> Free parking on premises
-          </div>
-          <div>
-            <FontAwesomeIcon icon={faWind} /> Private patio or balcony
-          </div>
-          <div>
-            <FontAwesomeIcon icon={faFire} /> Indoor fireplace
-          </div>
-          <div>
-            <FontAwesomeIcon icon={faBowlFood} /> Hair dryer
-          </div>
-          <div>
-            <FontAwesomeIcon icon={faWifi} /> Wifi
-          </div>
-          <div>
-            <FontAwesomeIcon icon={faTv} /> TV
-          </div>
-          <div>
-            <FontAwesomeIcon icon={faTree} /> Garden
-          </div>
-          <div>
-            <FontAwesomeIcon icon={faChild} /> Children's books and toys
-          </div>
-         
-        </div>
-        <button className="more-amenities-button">More amenities</button>
-        <a className="report-property-link" href="#">
-          Report Property
-        </a>
+        ))}
       </div>
-
-    )
+      <button
+        className="property-amenities-more-button"
+        onClick={() => setShowMore(!showMore)}
+      >
+        {showMore ? "Show less" : "More amenities"}
+      </button>
+      <a className="property-amenities-report-link" href="#">
+        Report Property
+      </a>
+    </div>
+  );
 }

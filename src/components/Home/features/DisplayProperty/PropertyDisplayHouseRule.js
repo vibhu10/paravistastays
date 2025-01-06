@@ -1,7 +1,14 @@
-import React from "react";
+// PropertyDisplayHouseRule.js
+import React, { useState } from "react";
 import "./PropertyDisplayHouseRule.css";
 
 const PropertyDisplayHouseRule = () => {
+  const [showAllRules, setShowAllRules] = useState(false);
+
+  const handleShowMore = () => {
+    setShowAllRules(!showAllRules);
+  };
+
   return (
     <div className="PropertyDisplayHouseRule-container">
       <h1 className="PropertyDisplayHouseRule-title">House Rules</h1>
@@ -27,9 +34,22 @@ const PropertyDisplayHouseRule = () => {
         </p>
       </div>
 
-      <a href="#" className="PropertyDisplayHouseRule-more">
-        More..
-      </a>
+      {showAllRules && (
+        <div className="PropertyDisplayHouseRule-rule">
+          <h2 className="PropertyDisplayHouseRule-ruleTitle">Rule 3</h2>
+          <p className="PropertyDisplayHouseRule-ruleText">
+            This is additional rule content that will appear when "More.." is
+            clicked.
+          </p>
+        </div>
+      )}
+
+      <button 
+        onClick={handleShowMore} 
+        className="PropertyDisplayHouseRule-more"
+      >
+        {showAllRules ? "Show Less" : "More.."}
+      </button>
     </div>
   );
 };

@@ -1,92 +1,96 @@
 /* PropertyOwnerDetails.css */
-
 .property-owner-details {
-    font-family: Arial, sans-serif;
-    max-width: 600px;
-    margin: 20px auto;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .property-owner-details__title {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  .property-owner-details__content {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .property-owner-details__avatar-section {
-    text-align: center;
-  }
-  
-  .property-owner-details__avatar {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #ddd;
-  }
-  
-  .property-owner-details__info {
-    margin-top: 10px;
-  }
-  
-  .property-owner-details__name {
-    font-size: 1.2rem;
-    color: #333;
-  }
-  
-  .property-owner-details__rating {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    margin: 5px 0;
-  }
-  
-  .property-owner-details__score {
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .property-owner-details__stars {
-    color: #f5a623;
-  }
-  
-  .property-owner-details__reviews {
-    font-size: 0.9rem;
-    color: #666;
-  }
-  
-  .property-owner-details__details p {
-    margin: 5px 0;
-    color: #333;
-    line-height: 1.5;
-  }
-  
-  .property-owner-details__bio {
-    color: #666;
-  }
-  
-  .property-owner-details__message-button {
-    margin-top: 15px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    color: #fff;
-    background-color: #28a745;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .property-owner-details__message-button:hover {
-    background-color: #218838;
-  }
-  
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  /* border: 1px solid #e0e0e0; */
+  border-radius: 8px;
+  padding: 16px;
+  /* max-width: 400px; */
+  /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); */
+}
+
+.property-owner-details__title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: #333;
+}
+
+.property-owner-details__container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.property-owner-details__header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.property-owner-details__avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #e0e0e0;
+}
+
+.property-owner-details__info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.property-owner-details__name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+.property-owner-details__rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #777;
+}
+
+.property-owner-details__score {
+  font-weight: bold;
+  color: #333;
+}
+
+.property-owner-details__reviews {
+  font-size: 12px;
+  color: #777;
+}
+
+.property-owner-details__body {
+  font-size: 14px;
+  color: #555;
+}
+
+.property-owner-details__bio {
+  margin-top: 8px;
+  color: #555;
+  font-size: 14px;
+}
+
+.property-owner-details__message-button {
+  width: 200px;
+  background-color: #198E78;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.property-owner-details__message-button:hover {
+  background-color: #0056b3;
+}
