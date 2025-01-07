@@ -1,0 +1,120 @@
+/* signup2 */
+
+
+.signup2-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it appears on top */
+  }
+  
+  .signup2-container {
+    background-color: white;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px 25px;
+    box-sizing: border-box;
+    z-index: 1100;
+    position: relative;
+    top: -1000px;
+      left: 739px;
+    animation: fadeIn 0.3s ease;
+  }
+  
+  .signup2-container h2 {
+    margin-top: 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+  }
+  
+  .signup2-input-group {
+    margin-bottom: 15px;
+  }
+  
+  .signup2-input-group label {
+    display: block;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 5px;
+  }
+  
+  .signup2-input-group input {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+  }
+  
+  .signup2-input-group input:focus {
+    border-color: #00704a;
+    outline: none;
+  }
+  
+  .signup2-checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .signup2-checkbox-group input {
+    margin-right: 10px;
+  }
+  
+  .signup2-checkbox-group label {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .signup2-agree {
+    font-size: 12px;
+    color: #888;
+    margin-top: 10px;
+    line-height: 1.5;
+    text-align: justify;
+  }
+  
+  
+  button:active {
+    transform: translateY(0);
+  }
+  
+  /* Popup animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @media (max-width: 500px) {
+    .signup2-container {
+      padding: 15px 20px;
+    }
+  
+    button {
+      font-size: 14px;
+    }
+  
+    .signup2-container h2 {
+      font-size: 18px;
+    }
+  }
+  
+  

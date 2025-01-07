@@ -1,7 +1,7 @@
 import React from "react";
 import SearchBar from "./features/SearchBar";
 import HamburgerFilter from "./features/HamburgerFilter";
-
+import './Header.css'
 
 export default function Header({
   toggleMenu,

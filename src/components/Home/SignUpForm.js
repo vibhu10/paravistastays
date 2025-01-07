@@ -1,5 +1,5 @@
 import React from "react";
-
+import './SignUpForm.css'
 export default function SignUpForm({setFirstName, setLastName, setDob, setPassword, handleCompleteSignUp, firstName, lastName, dob, password, error, email}) {
 
 return(

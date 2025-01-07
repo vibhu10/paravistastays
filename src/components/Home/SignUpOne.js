@@ -1,3 +1,5 @@
+
+import './SignUpOne.css'
 export default function SignUpOne({setSignupPopup, email, setEmail, error, handleSignUp}){
     return(
         <div className="signup-popup">
