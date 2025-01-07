@@ -1,52 +1,64 @@
+/* PropertyImageGrid Component Styles */
+
 .PropertyImageGrid-container {
   display: flex;
   flex-direction: column;
-  position: relative;
+  gap: 16px;
+  margin: 0 auto;
   max-width: 1200px;
-  margin: auto;
 }
 
 .PropertyImageGrid-grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 10px;
+  grid-gap: 12px;
+  height: 500px;
+  position: relative;
+}
+
+.PropertyImageGrid-main-image {
+  grid-column: 1 / 2;
+  height: 100%;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .PropertyImageGrid-main-image img {
   width: 100%;
   height: 100%;
-  border-radius: 10px;
   object-fit: cover;
 }
 
 .PropertyImageGrid-sub-images {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 10px;
+  grid-gap: 12px;
+  position: relative;
 }
 
 .PropertyImageGrid-sub-images img {
   width: 100%;
   height: 100%;
-  border-radius: 10px;
   object-fit: cover;
+  border-radius: 8px;
 }
 
 .PropertyImageGrid-show-all-button {
-  margin-top: 15px;
-  align-self: flex-end;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 20px;
-  padding: 8px 15px;
-  font-size: 14px;
+  position: absolute;
+  bottom: 168px;
+  right: 472px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  font-size: 16px;
+  padding: 7px 16px;
+  border: none;
+  border-radius: 4px;
   cursor: pointer;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 2;
 }
 
 .PropertyImageGrid-show-all-button:hover {
-  background-color: #f5f5f5;
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
 /* Gallery Popup */
@@ -58,40 +70,41 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   z-index: 1000;
 }
 
 .PropertyImageGrid-gallery-content {
-  background: #fff;
-  border-radius: 12px;
+  background-color: white;
   padding: 20px;
-  display: flex;
-  flex-wrap: wrap;
+  border-radius: 8px;
   max-width: 90%;
   max-height: 90%;
   overflow-y: auto;
-  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
 }
 
-.PropertyImageGrid-gallery-content img {
-  width: calc(33.33% - 10px);
-  margin: 5px;
-  border-radius: 10px;
+.PropertyImageGrid-gallery-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
 }
 
 .PropertyImageGrid-close-button {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  background: transparent;
+  top: 20px;
+  right: 20px;
+  background: none;
   border: none;
   font-size: 24px;
-  color: #333;
+  color: white;
   cursor: pointer;
+  z-index: 1100;
 }
 
 .PropertyImageGrid-close-button:hover {
-  color: red;
+  color: #ff0000;
 }

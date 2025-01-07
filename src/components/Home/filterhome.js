@@ -1,7 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
-
+import './filterhome.css'
 export default function FilterHome
 ({handleScrollLeft, handleScroll, handleFilterClick, scrollOffset,filters}) {
     return(

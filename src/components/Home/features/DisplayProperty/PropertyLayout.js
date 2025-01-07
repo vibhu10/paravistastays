@@ -1,41 +1,22 @@
 import React, { useState } from 'react';
 import './PropertyLayout.css';
 
-export default function PropertyLayout() {
-  const data = {
-    photoGallery: [
-      {
-        name: 'Bedroom',
-        Photos: [
-          'https://images.pexels.com/photos/3581753/pexels-photo-3581753.jpeg',
-          'https://images.pexels.com/photos/3581753/pexels-photo-3581753.jpeg',
-          'https://images.pexels.com/photos/3581753/pexels-photo-3581753.jpeg',
-        ],
-      },
-      {
-        name: 'Living Room',
-        Photos: [
-          'https://images.pexels.com/photos/3241973/pexels-photo-3241973.jpeg',
-          'https://images.pexels.com/photos/3241973/pexels-photo-3241973.jpeg',
-        ],
-      },
-      {
-        name: 'Kitchen',
-        Photos: [],
-      },
-    ],
-  };
-
-  const [selectedGallery, setSelectedGallery] = useState('Bedroom');
+export default function PropertyLayout({ data }) {
+  // Set initial gallery to the first one, or default to an empty state
+  const [selectedGallery, setSelectedGallery] = useState(
+    data?.[0]?.name || ''
+  );
   const [photos, setPhotos] = useState(
-    data.photoGallery.find((gallery) => gallery.name === 'Bedroom')?.Photos || []
+    data?.[0]?.photos || []
   );
 
   const handleSelectionChange = (event) => {
     const selectedName = event.target.value;
     setSelectedGallery(selectedName);
-    const gallery = data.photoGallery.find((gallery) => gallery.name === selectedName);
-    setPhotos(gallery ? gallery.Photos : []);
+
+    // Find the gallery based on the selected name and update photos
+    const gallery = data.find((gallery) => gallery.name === selectedName);
+    setPhotos(gallery ? gallery.photos : []);
   };
 
   return (
@@ -51,8 +32,8 @@ export default function PropertyLayout() {
             onChange={handleSelectionChange}
             className="property-select-layout-home-select"
           >
-            {data.photoGallery.map((gallery, index) => (
-              <option key={index} value={gallery.name}>
+            {data.map((gallery, index) => (
+              <option key={gallery.id} value={gallery.name}>
                 {gallery.name}
               </option>
             ))}

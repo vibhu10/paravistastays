@@ -1,5 +1,6 @@
 /* HamburgerFilter.css */
 
+/* General Container Styles */
 .hamburgerFilter-container {
   display: flex;
   flex-direction: column;
@@ -11,15 +12,36 @@
   flex-wrap: wrap;
   gap: 1rem;
 }
-/* Remove the blue border on focus for accordion button */
-.accordion-button:focus {
-  box-shadow: none;  /* Removes the outline */
-  border: none; /* Optional: if there's a border on focus */
+
+/* Accordion Styles */
+.accordion-button {
+  background-color: transparent;
+  color: black;
+  font-weight: bold;
+  border: none;
+  box-shadow: none; /* Removes focus outline */
 }
 
+.accordion-button:not(.collapsed) {
+  background-color: transparent;
+}
+
+.accordion-item {
+  border: none;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.accordion-header {
+  margin-bottom: 0.5rem;
+}
+
+/* Hamburger Filter Category */
 .hamburgerFilter-category {
-  display: flex
-;
+  display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -33,14 +55,13 @@
   transition: all 0.3s ease;
   background-color: white;
 }
+
 .hamburgerFilter-category:hover {
   border-color: #28a745;
-  /* background-color: #eafae5; */
 }
 
 .hamburgerFilter-category.selected {
   border-color: #28a745;
-  /* background-color: #d4edda; */
   color: #155724;
 }
 
@@ -54,29 +75,7 @@
   font-weight: 500;
 }
 
-/* Accordion Header Styling */
-.accordion-button {
-  background-color: transparent;
-  color: black;
-  font-weight: bold;
-  border: none;
-}
-
-.accordion-button:not(.collapsed) {
-  background-color: transparent;
-  color: black;
-}
-
-.accordion-item {
-  border: none;
-  border-bottom: 1px solid #ddd;
-}
-
-.accordion-header {
-  margin-bottom: 0.5rem;
-}
-
-/* Price Range Styling */
+/* Price Range Styles */
 .price-range-slider {
   display: flex;
   flex-direction: column;
@@ -86,7 +85,6 @@
 .price-range-labels {
   display: flex;
   justify-content: space-between;
-  gap: 1rem;
 }
 
 .price-range-input {
@@ -106,9 +104,8 @@
   padding: 0.5rem;
   width: 100%;
 }
-/* General styling */
 
-
+/* Toggle Section */
 .toggle-section {
   display: flex;
   flex-wrap: wrap;
@@ -120,7 +117,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  width: 48%; /* To make them look good on larger screens */
+  width: 48%;
   min-width: 300px;
 }
 
@@ -168,18 +165,6 @@
   transition: 0.4s;
 }
 
-/* Accordion Styles */
-.accordion-item {
-  margin-bottom: 15px;
-  border-radius: 5px;
-  background-color: #ffffff;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-
-
-
-
 /* Accessibility Section */
 .accessibility-section {
   margin-bottom: 20px;
@@ -209,8 +194,103 @@
   height: 20px;
 }
 
+/* Hamburger Button Styles */
+.filter-hamburger {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #198E78;
+  gap: 6px;
+  color: white;
+  margin: 5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.filter-hamburger:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  background: #147b5b;
+}
+
+.filter-hamburger .line {
+  width: 32px;
+  height: 4px;
+  background-color: white;
+  border-radius: 2px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.filter-hamburger:hover .line {
+  background-color: #FFDC5B;
+}
+
+.filter-hamburger .line:nth-child(1) {
+  transform-origin: top left;
+}
+
+.filter-hamburger .line:nth-child(2) {
+  transform-origin: center;
+}
+
+.filter-hamburger .line:nth-child(3) {
+  transform-origin: bottom left;
+}
+
+.filter-hamburger:active .line:nth-child(1) {
+  transform: rotate(45deg);
+}
+
+.filter-hamburger:active .line:nth-child(2) {
+  transform: scale(0.6);
+}
+
+.filter-hamburger:active .line:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+.filter-hamburger .filter {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.filter-hamburger:hover .filter {
+  opacity: 1;
+  transform: translateX(-50%) translateY(20px);
+}
+
+/* Modal Styles */
+.modal-container-Hamburger-Filter {
+  width: 90%;
+  max-width: 500px;
+  top: 130px;
+  right: 50%;
+  transform: translateX(50%) translateY(-20px);
+  position: absolute;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  transition: all 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+/* Responsive Adjustments */
 @media (max-width: 768px) {
   .toggle-item {
-    width: 100%; /* Stacking on smaller screens */
+    width: 100%;
   }
 }

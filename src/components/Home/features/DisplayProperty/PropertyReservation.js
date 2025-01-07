@@ -1,11 +1,18 @@
-import { useState } from "react";
-import './PropertyReservation.css'
-export default function PropertyReservation() {
+import { useState, useEffect } from "react";
+import './PropertyReservation.css';
+
+export default function PropertyReservation({ price, availability }) {
+    console.log(price, availability);
     const [checkinDate, setCheckinDate] = useState("");
     const [checkoutDate, setCheckoutDate] = useState("");
     const [totalCost, setTotalCost] = useState(0);
-    const nightlyRate = 275;
-    const serviceFee = 93;
+
+    const nightlyRate = price.BaseCharge;
+    const serviceFee = price.ServiceFees;
+
+    useEffect(() => {
+        calculateTotalCost();
+    }, [checkinDate, checkoutDate]);
 
     const calculateTotalCost = () => {
         if (checkinDate && checkoutDate) {
@@ -25,6 +32,17 @@ export default function PropertyReservation() {
         }
     };
 
+    const getNumberOfNights = () => {
+        if (checkinDate && checkoutDate) {
+            const checkin = new Date(checkinDate);
+            const checkout = new Date(checkoutDate);
+            const timeDiff = checkout - checkin;
+            const numberOfNights = timeDiff / (1000 * 60 * 60 * 24);
+            return numberOfNights > 0 ? numberOfNights : 0;
+        }
+        return 0;
+    };
+
     return (
         <div className="reservation-for-selected-property">
             <div className="reservation-for-selected-property-price-section">
@@ -39,10 +57,7 @@ export default function PropertyReservation() {
                         type="date"
                         className="reservation-for-selected-property-date-input"
                         value={checkinDate}
-                        onChange={(e) => {
-                            setCheckinDate(e.target.value);
-                            calculateTotalCost();
-                        }}
+                        onChange={(e) => setCheckinDate(e.target.value)}
                     />
                 </div>
                 <div className="reservation-for-selected-property-checkout">
@@ -51,10 +66,7 @@ export default function PropertyReservation() {
                         type="date"
                         className="reservation-for-selected-property-date-input"
                         value={checkoutDate}
-                        onChange={(e) => {
-                            setCheckoutDate(e.target.value);
-                            calculateTotalCost();
-                        }}
+                        onChange={(e) => setCheckoutDate(e.target.value)}
                     />
                 </div>
             </div>
@@ -75,18 +87,10 @@ export default function PropertyReservation() {
             <div className="reservation-for-selected-property-costs">
                 <div className="reservation-for-selected-property-line-item">
                     <p className="reservation-for-selected-property-item-description">
-                        ${nightlyRate} × {checkinDate && checkoutDate
-                            ? (new Date(checkoutDate) - new Date(checkinDate)) /
-                              (1000 * 60 * 60 * 24)
-                            : 0}{" "}
-                        nights
+                        ${nightlyRate} × {getNumberOfNights()} nights
                     </p>
                     <p className="reservation-for-selected-property-item-cost">
-                        ${checkinDate && checkoutDate
-                            ? ((new Date(checkoutDate) - new Date(checkinDate)) /
-                                  (1000 * 60 * 60 * 24)) *
-                              nightlyRate
-                            : 0}
+                        ${getNumberOfNights() * nightlyRate}
                     </p>
                 </div>
                 <div className="reservation-for-selected-property-line-item">

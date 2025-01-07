@@ -341,7 +341,7 @@ export default function Home() {
        <PropertyCard
        propertyData={propertyData} selectedProperty={selectedProperty}
        />:
-       <DisplayProperty selectedPropertyData={selectedPropertyData}/>
+       <DisplayProperty selectedPropertyData={selectedPropertyData} setIsPropertySelected={setIsPropertySelected}/>
       }
 
       </div>

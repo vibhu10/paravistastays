@@ -8,16 +8,9 @@ import {
   faBath,
 } from "@fortawesome/free-solid-svg-icons";
 
-export default function PropertyDescription() {
+export default function PropertyDescription({fullDescription,title,country}) {
+  console.log(fullDescription,"@@@@@")
   const [isExpanded, setIsExpanded] = useState(false);
-
-  // Full and truncated descriptions
-  const fullDescription = `Hoots Treehouse is a picture-perfect, romantic, luxurious treehouse
-    with all modern conveniences in an area of outstanding natural
-    beauty - only 45 minutes south of M25. Clad in aromatic cedar wood,
-    beautifully furnished - ideal private, woodland retreat for couples.
-    A wonderful place to chill out and lose yourself - you won’t want to
-    leave! Sheer bliss!`;
 
   const truncatedDescription = `${fullDescription.substring(0, 150)}...`;
 
@@ -29,7 +22,7 @@ export default function PropertyDescription() {
   return (
     <div className="property-description-home-selected">
       <h3 className="property-description-home-selected-title">
-        Treehouse in Mayfield, United Kingdom
+       {title}, {country}
       </h3>
 
       <div className="property-description-home-selected-info">

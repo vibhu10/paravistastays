@@ -1,3 +1,4 @@
+import './PropertyCard.css'
 export default function PropertyCard({propertyData, selectedProperty}){
 
     return(

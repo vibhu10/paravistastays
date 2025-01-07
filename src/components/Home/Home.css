@@ -1,6 +1,6 @@
 .home-container {
     width: 100%;
-    /* border: 5px solid red; */
+
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -9,7 +9,7 @@
   .header {
     width: 100%;
     height: 200px;
-    /* border: 2px solid black; */
+ 
     display: flex;
     flex-direction: column;
     
@@ -40,146 +40,17 @@
   background: #198E78;
   border-radius: 10px;
   }
-  /*homw filter hamburger*/
-  
-  .filter-hamburger {
-    position: relative;
-    
-    width: 64px;
-    height: 64px;
-    border-radius: 12px; /* Rounded corners for a soft look */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: #198E78; /* The primary green color */
-    gap: 6px; /* Increased gap for cleaner spacing */
-    color: white;
-    margin: 5px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
-    transition: all 0.3s ease; /* Smooth transition for all properties */
-  }
-  
-  /* Hover effect */
-  .filter-hamburger:hover {
-    transform: scale(1.1); /* Slightly enlarges on hover */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Deeper shadow on hover */
-    background: #147b5b; /* Slightly darker shade on hover */
-  }
-  
-  /* The lines of the hamburger */
-  .filter-hamburger .line {
-    width: 32px; /* Slightly wider lines for better visibility */
-    height: 4px; /* Thicker lines for better visual impact */
-    background-color: white;
-    border-radius: 2px;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-  }
-  
-  /* Hover effect on the lines */
-  .filter-hamburger:hover .line {
-    background-color: #FFDC5B; /* Change lines color to yellow on hover */
-  }
-  
-  /* Add a little animation on hover for the lines */
-  .filter-hamburger .line:nth-child(1) {
-    transform-origin: top left;
-  }
-  
-  .filter-hamburger .line:nth-child(2) {
-    transform-origin: center;
-  }
-  
-  .filter-hamburger .line:nth-child(3) {
-    transform-origin: bottom left;
-  }
-  
-  /* Optional: Add a smooth transition when clicking the button */
-  .filter-hamburger:active .line:nth-child(1) {
-    transform: rotate(45deg);
-  }
-  
-  .filter-hamburger:active .line:nth-child(2) {
-    transform: scale(0.6); /* Middle line disappears on click */
-  }
-  
-  .filter-hamburger:active .line:nth-child(3) {
-    transform: rotate(-45deg);
-  }
-  
-  /* Optional: Add a label (filter) that appears on hover */
-  .filter-hamburger .filter {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%) translateY(10px);
-    font-size: 14px;
-    font-weight: 600;
-    color: white;
-    opacity: 0; /* Hidden by default */
-    pointer-events: none;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-  }
-  
-  /* Show the label when hovering over the hamburger */
-  .filter-hamburger:hover .filter {
-    opacity: 1; /* Show the label */
-    transform: translateX(-50%) translateY(20px); /* Animate label position */
-  }
 
-
-/* Enhanced Hamburger Filter Modal */
-.modal-container-Hamburger-Filter{
-  width: 500px;
-  top: 130px;
-  right: 514px;
-  position: absolute;
-  background: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-  transform: translateY(-20px);
-  opacity: 1;
-  transition: all 0.3s ease-in-out;
-  z-index: 1000;
-}
-
-
-  
-  
-  /* this is hamburger menu */
-  .hamburger-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-    padding: 0;
-  }
-  
-  .line {
-    width: 30px;
-    height: 3px;
-    background-color: white;
-    border-radius: 2px;
-  }
-  
-  .short {
-    width: 20px; /* Shorter middle line */
-  }
   
   /*login popup*/
 /* General styles for the login popup */
 .login-popup {
-  width: 90%; /* Make it responsive */
-  max-width: 500px; /* Restrict to a maximum size */
-  height: auto; /* Adjust height dynamically */
+  width: 90%; 
+  max-width: 500px; 
+  height: auto; 
   padding: 20px;
   background-color: white;
-  position: fixed; /* Keep it fixed in the viewport */
+  position: fixed; 
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -323,218 +194,12 @@
     height: 50vh;
   }
  
- /* filter */
- .container-filter-buttons {
-  padding-right: 277px;
-  padding-left: 200px;
-  padding-top: 10px;
-  width: 100%;
-  display: flex
-;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #ffffff;
-  /* border-radius: 16px; */
-  /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); */
-  gap: -18px;
-}
-
-.compare-button {
-  background-color: #007d6d;
-  color: #ffffff;
-  border: none;
-  border-radius: 30px;
-  
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.compare-button:hover {
-  background-color: #005f53;
-  transform: scale(1.05);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-}
-
-.filter-wrapper {
-  display: flex;
-  overflow: hidden;
-  flex: 1;
-  position: relative;
-  margin: 0 12px;
-}
-
-.filter-row {
-  display: flex;
-  gap: 24px;
-  transition: transform 0.4s ease-in-out;
-  will-change: transform;
-}
-
-.filter-item {
-  min-width: 110px;
-  text-align: center;
-  transition: transform 0.2s ease, opacity 0.3s ease;
-}
-
-.filter-item:hover {
-  transform: translateY(-6px);
-  opacity: 0.9;
-  color: none;
-}
-
-.btn {
-  border: none;
-  background-color: transparent;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px 16px;
-  cursor: pointer;
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.btn-outline-primary {
-  color: #666666;
-  font-size: 14px;
-  text-transform: capitalize;
-  font-weight: 500;
-}
-
-.btn-outline-primary:hover {
-  color: #007d6d;
-  font-weight: 700;
-}
-
-.bi {
-  font-size: 26px;
-  color: grey;
-  transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.btn-outline-primary:hover .bi {
-  color: #007d6d;
-  transform: scale(1.2);
-}
-
-.scroll-button {
-  background-color: #f0f0f0;
-  border: none;
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-.scroll-button:hover {
-  background-color: #e0e0e0;
-  transform: scale(1.1);
-}
-
-.scroll-button .bi {
-  font-size: 22px;
-  color: #444444;
-  transition: color 0.3s ease;
-}
-
-.scroll-button:hover .bi {
-  color: #007d6d;
-}
-
-/* Active State for Selected Filters */
-.filter-item.active .btn-outline-primary {
-  color: #007d6d;
-  font-weight: 700;
-}
-
-.filter-item.active .bi {
-  color: #007d6d;
-}
-
-/* Media Queries for Responsiveness */
-@media (max-width: 768px) {
-  .container-filter-buttons {
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 16px;
-    gap: 12px;
-  }
-
-  .compare-button {
-    margin-bottom: 12px;
-  }
-
-  .scroll-button {
-    width: 40px;
-    height: 40px;
-  }
-
-  .filter-item {
-    min-width: 90px;
-  }
-
-  .bi {
-    font-size: 22px;
-  }
-}
-
-@media (max-width: 576px) {
-  .filter-item {
-    min-width: 80px;
-  }
-
-  .compare-button {
-    font-size: 14px;
-    padding: 8px 16px;
-  }
-
-  .scroll-button {
-    width: 36px;
-    height: 36px;
-  }
-}
 
 
 
 
-/* Filters Container */
-/* Filter Bar Container */
-.filter-bar-container {
-  display: flex;
-  align-items: center;
-  background-color: #ffffff;
-  padding: 10px 20px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto; /* Center the bar on the page */
-}
 
-/* Compare Button */
-.compare-button {
-  background-color: #008060;
-  color: #ffffff;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 16px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  white-space: nowrap;
-  margin-right: 20px;
-  transition: background-color 0.3s ease;
-}
 
-.compare-button:hover {
-  background-color: #006644;
-}
 
 
 
@@ -548,57 +213,7 @@
     flex-direction: column; /* Adjust as needed */
     align-items: center; /* Center items */
   }
-  .hotel-data {
-    /* width: 100vw; */
-    background-color: white;
-    display: flex
-;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 50px;
-   padding-top: 10px;
-}
 
-.hotel-card {
-  width: 400px;
-  height: 400px;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  margin: 22px;
-  border-radius: 12px; /* Adds rounded corners */
- 
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Adds hover effects */
-  cursor: pointer; /* Changes cursor to a hand sign on hover */
-}
-
-.hotel-card:hover {
-  transform: translateY(-5px); /* Slight lift on hover */
-  /* Enhanced shadow on hover */
-}
-
-
-  .hotel-card img {
-    object-fit: cover;
-    width: 100%;
-    height: 70%; /* Image takes 70% of the card's height */
-    border-radius: 20px ; /* Rounded top corners */
-  }
-  
- 
-
-    #hotel-detail {
-      margin-top: 12px;
-      height: 40%;
-      box-sizing: border-box;
-      /* overflow: hidden; */
-  }
-  
-  
-  #hotel-detail p,h3{
-    line-height: 3px;
-  }
-  
   /*footer*/
   
   .home-footer {
@@ -681,7 +296,7 @@
   right: 0;
   background-color: white;
   border-radius: 10px;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15); /* Light shadow for elevation */
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
   width: 200px;
   z-index: 10;
 }
@@ -925,18 +540,7 @@
   text-align: justify;
 }
 
-/* button {
-  width: 100%;
-  padding: 12px;
-  background-color: #00704a;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 15px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-} */
+
 button:active {
   transform: translateY(0);
 }
