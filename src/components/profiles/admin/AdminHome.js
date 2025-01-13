@@ -4,7 +4,7 @@ import "./AdminHome.css";
 // Components
 import Dashboard from "./Dashboard/Dashboard";
 import GuestList from "./Guest/GuestList";
-import BookingList from "./Guest/BookingList";
+
 import HostList from "./Host/HostList";
 import Influencer from "./Influencer/Influencer";
 import AdminHeader from "./AdminHeader";
@@ -16,6 +16,7 @@ import Loading from "../../Loading";
 import BookingListHost from "./Host/BookingListHost";
 import PaymentAndfinance from "./Payments/PaymentAndFinance";
 import CustomerSupport from "./CustomerSupport/CustromerSupport";
+import BookingListGuest from "./Guest/BookingListGuest";
 export default function AdminHome() {
     const [activeSection, setActiveSection] = useState("Dashboard");
     const [guestMenuOpen, setGuestMenuOpen] = useState(false);
@@ -37,7 +38,7 @@ export default function AdminHome() {
                 return userType === "superadmin" ? <GuestList /> : <div>Access Denied</div>;
             case "BookingList":
                 return userType === "superadmin" || userType === "Author" ? (
-                    <BookingList />
+                    <BookingListGuest/>
                 ) : (
                     <div>Access Denied</div>
                 );

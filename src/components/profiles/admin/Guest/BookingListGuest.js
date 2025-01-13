@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import '../Guest/BookingListGuest.css';
+import './BookingListGuest.css';
 
-export default function BookingListHost() {
+export default function BookingListGuest() {
   const allBookings = [
     {
       bookingId: '#s2000154',

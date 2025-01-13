@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./DisplayProperty.css";
 
 import SelectedPropertyCalendar from "./SelectedPropertyCalendar";
@@ -12,10 +12,17 @@ import PropertyDescription from "./propertyDescription";
 import PropertyAmenities from "./propertyAnenities";
 import PropertyReview from "./propertyReview";
 import PropertyLayout from "./PropertyLayout";
-
+import ConfirmBookingPage from "./ConfirmBookingPage"; // Import ConfirmBookingPage
 
 function DisplayProperty({ selectedPropertyData, setIsPropertySelected }) {
-  console.log(selectedPropertyData);
+  const [reserve, setReservePage] = useState(false);
+  const [BookingDetails,setBookingDetails]=useState([])
+  console.log(BookingDetails,"#$#$#");
+  // Conditional rendering for ConfirmBookingPage
+  if (reserve) {
+    return <ConfirmBookingPage BookingDetails={BookingDetails}title={selectedPropertyData.title} fullDescription={selectedPropertyData.description} />;
+  }
+
   return (
     <div className="property-container">
       {/* Title Section */}
@@ -64,10 +71,19 @@ function DisplayProperty({ selectedPropertyData, setIsPropertySelected }) {
       {/* Property Details Section */}
       <div className="property-details-section">
         {/* Left: Property Description */}
-        <PropertyDescription fullDescription={selectedPropertyData.description}title={selectedPropertyData.title} country={selectedPropertyData.Address.country}/>
+        <PropertyDescription
+          fullDescription={selectedPropertyData.description}
+          title={selectedPropertyData.title}
+          country={selectedPropertyData.Address.country}
+        />
 
         {/* Right: Reservation Widget */}
-        <PropertyReservation price={selectedPropertyData.price} availability={selectedPropertyData.availability} />
+        <PropertyReservation
+          price={selectedPropertyData.price}
+          availability={selectedPropertyData.availability}
+          setReservePage={setReservePage}
+          setBookingDetails={setBookingDetails}
+        />
       </div>
 
       <hr />

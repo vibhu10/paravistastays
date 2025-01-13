@@ -1,0 +1,203 @@
+/* ConfirmBookingPage.css */
+
+.confirmBookingPage {
+    margin-top: 30px;
+    width: 55%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+  
+  .confirmBookingPage-content {
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+    gap: 20px;
+  }
+  
+  /* Left Section */
+  .confirmBookingPage-left {
+    flex: 2;
+
+    padding: 20px;
+    border-radius: 8px;
+  
+  }
+  
+  .confirmBookingPage-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .confirmBookingPage-section {
+    margin-bottom: 20px;
+  }
+  
+  .confirmBookingPage-section-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .confirmBookingPage-detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .confirmBookingPage-label {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .confirmBookingPage-detail-value {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .confirmBookingPage-edit {
+    background: none;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: underline;
+  }
+  
+  .confirmBookingPage-payment-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .confirmBookingPage-select {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-top: 10px;
+  }
+  
+  .confirmBookingPage-icons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .confirmBookingPage-icons img {
+    width: 40px;
+    height: auto;
+  }
+  
+  .confirmBookingPage-disclaimer {
+    font-size: 12px;
+    color: #777;
+    margin-top: 20px;
+  }
+  
+  .confirmBookingPage-disclaimer a {
+    color: #007bff;
+    text-decoration: underline;
+  }
+  
+  .confirmBookingPage-button {
+    /* width: 100%; */
+    background-color: #198E78;
+    color: #fff;
+    font-size: 16px;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+  
+  /* Right Section */
+  .confirmBookingPage-right {
+    height: 400px;
+    flex: 1;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .confirmBookingPage-summary {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .confirmBookingPage-image {
+    margin-top: 20px;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .confirmBookingPage-property {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .confirmBookingPage-property-title {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .confirmBookingPage-property-type {
+    font-size: 14px;
+    color: #777;
+  }
+  
+  .confirmBookingPage-rating {
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .confirmBookingPage-pricing {
+   
+  }
+  
+  .confirmBookingPage-pricing-row {
+    display: flex;
+    justify-content: space-between;
+    
+    font-size: 14px;
+  }
+  
+  .confirmBookingPage-pricing-row.total {
+    font-weight: bold;
+    font-size: 16px;
+  }
+  
+  .confirmBookingPage-divider {
+    border: 0;
+    border-top: 1px solid #ddd;
+    margin: 10px 0;
+  }
+  /* ConfirmBookingPage.css */
+
+/* Ensure text wraps properly in the right section */
+.confirmBookingPage-property-type {
+  word-wrap: break-word;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.confirmBookingPage-right {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Other CSS styles remain unchanged */
